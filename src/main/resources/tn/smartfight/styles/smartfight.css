@@ -1,0 +1,848 @@
+/* ============================================================
+   SmartFight — Module 5 CSS
+   Inspired by UFC.com + ONE Championship
+   ============================================================ */
+
+/* ---- Root ---- */
+.root {
+    -fx-background-color: #09090b; /* zinc-950 */
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+/* ---- Sidebar ---- */
+.sidebar {
+    -fx-background-color: #09090b;
+    -fx-border-color: transparent #27272a transparent transparent; /* zinc-800 */
+    -fx-border-width: 0 1 0 0;
+    -fx-min-width: 256px;
+    -fx-pref-width: 256px;
+}
+
+.app-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: 900; /* black */
+    -fx-font-style: italic;
+    -fx-text-fill: #fafafa; /* zinc-50 */
+    /* tracking-tighter effect */
+}
+
+.app-subtitle {
+    -fx-font-size: 11px;
+    -fx-text-fill: #dc2626; /* red-600 */
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 0 0;
+    /* tracking-widest effect */
+}
+
+.user-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #fafafa;
+    -fx-font-weight: bold;
+}
+
+/* ---- Navigation Buttons ---- */
+.nav-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #a1a1aa; /* zinc-400 */
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-padding: 12 24 12 24;
+    -fx-alignment: CENTER-LEFT;
+    -fx-max-width: Infinity;
+    -fx-cursor: hand;
+    -fx-border-color: transparent;
+    -fx-background-radius: 8px; /* rounded-lg */
+    -fx-border-radius: 8px;
+    -fx-pref-height: 48px;
+    -fx-margin: 4 12 4 12; /* spacing between items */
+}
+.nav-btn:hover {
+    -fx-background-color: #27272a; /* hover:bg-zinc-800 */
+    -fx-text-fill: #fafafa;
+}
+.nav-btn:selected, .nav-btn:focused, .nav-active {
+    -fx-background-color: #dc2626; /* bg-red-600 */
+    -fx-text-fill: #ffffff;
+}
+
+/* ---- Unread Badge ---- */
+.unread-badge {
+    -fx-background-color: #ef4444; /* red-500 */
+    -fx-text-fill: white;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-padding: 2 6 2 6;
+    -fx-background-radius: 10px; /* rounded-full */
+    -fx-min-width: 20px;
+    -fx-alignment: CENTER;
+}
+
+/* ---- Content Area ---- */
+.content-area {
+    -fx-background-color: #09090b; /* zinc-950 */
+}
+
+/* ---- Page Header (editorial, UFC-style) ---- */
+.page-header {
+    -fx-background-color: #18181b; /* zinc-900 */
+    -fx-padding: 0 32 0 32;
+    -fx-border-color: transparent transparent #27272a transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-min-height: 64px;
+    -fx-pref-height: 64px;
+    -fx-alignment: CENTER-LEFT;
+}
+
+.page-title {
+    -fx-font-size: 32px;
+    -fx-font-weight: 900; /* black */
+    -fx-font-style: italic;
+    -fx-text-fill: #fafafa;
+}
+
+.page-subtitle {
+    -fx-font-size: 12px;
+    -fx-text-fill: #a1a1aa;
+    -fx-font-weight: bold;
+}
+
+/* ---- Section Header (thin red underline — UFC "TOP STORIES" style) ---- */
+.section-header {
+    -fx-padding: 0 0 8 0;
+    -fx-border-color: transparent transparent #dc2626 transparent;
+    -fx-border-width: 0 0 2 0;
+}
+
+.section-header-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #fafafa;
+}
+
+/* ---- Primary Button — sharp, no radius ---- */
+.btn-primary {
+    -fx-background-color: #dc2626;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 12 24 12 24;
+    -fx-background-radius: 9999px; /* pill-shaped */
+    -fx-border-width: 0;
+    -fx-cursor: hand;
+    -fx-font-size: 13px;
+    -fx-effect: dropshadow(gaussian, rgba(69, 10, 10, 0.5), 10, 0.5, 0, 4); /* shadow-lg shadow-red-900/50 */
+}
+.btn-primary:hover {
+    -fx-background-color: #ef4444; /* red-500 */
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+.btn-primary:pressed {
+    -fx-background-color: #b91c1c;
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+}
+
+/* ---- Secondary Button ---- */
+.btn-secondary {
+    -fx-background-color: transparent;
+    -fx-text-fill: #fafafa;
+    -fx-border-color: #27272a;
+    -fx-border-width: 1;
+    -fx-font-weight: bold;
+    -fx-padding: 12 24 12 24;
+    -fx-background-radius: 9999px;
+    -fx-border-radius: 9999px;
+    -fx-cursor: hand;
+    -fx-font-size: 13px;
+}
+.btn-secondary:hover {
+    -fx-background-color: #27272a;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+/* ---- Danger Button ---- */
+.btn-danger {
+    -fx-background-color: transparent;
+    -fx-border-color: #dc2626;
+    -fx-border-width: 1;
+    -fx-text-fill: #dc2626;
+    -fx-font-weight: bold;
+    -fx-padding: 12 24 12 24;
+    -fx-background-radius: 9999px;
+    -fx-border-radius: 9999px;
+    -fx-cursor: hand;
+    -fx-font-size: 13px;
+}
+.btn-danger:hover {
+    -fx-background-color: #450a0a; /* red-950 */
+}
+
+/* ---- Gold Button ---- */
+.btn-gold {
+    -fx-background-color: #c9a227;
+    -fx-text-fill: #080808;
+    -fx-font-weight: bold;
+    -fx-padding: 11 26 11 26;
+    -fx-background-radius: 0;
+    -fx-cursor: hand;
+    -fx-font-size: 12px;
+}
+.btn-gold:hover {
+    -fx-background-color: #e0b82b;
+    -fx-effect: dropshadow(gaussian, #c9a22788, 10, 0.4, 0, 0);
+}
+
+/* ---- Cards ---- */
+.card {
+    -fx-background-color: #18181b; /* zinc-900 */
+    -fx-border-color: #27272a; /* border-zinc-800 */
+    -fx-border-width: 1px;
+    -fx-border-radius: 16px; /* rounded-2xl */
+    -fx-background-radius: 16px;
+    -fx-padding: 24; /* p-6 */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 20, 0.2, 0, 8); /* shadow-xl */
+}
+.card:hover {
+    -fx-border-color: #3f3f46; /* border-zinc-700 */
+}
+
+/* ---- Stat Cards (UFC rankings bold style) ---- */
+.stat-card {
+    -fx-background-color: #18181b;
+    -fx-border-color: #27272a;
+    -fx-border-width: 1;
+    -fx-padding: 24;
+    -fx-background-radius: 16px;
+    -fx-border-radius: 16px;
+    -fx-min-width: 140px;
+}
+.stat-card-title {
+    -fx-font-size: 12px;
+    -fx-text-fill: #a1a1aa;
+    -fx-font-weight: bold;
+}
+.stat-card-value {
+    -fx-font-size: 32px;
+    -fx-font-weight: 900;
+    -fx-font-style: italic;
+    -fx-text-fill: #fafafa;
+}
+
+/* ---- Table View (Dark Theme) ---- */
+.table-view {
+    -fx-background-color: #09090b;
+    -fx-border-color: #27272a;
+    -fx-table-cell-border-color: #181818;
+}
+.table-view .column-header-background {
+    -fx-background-color: #18181b;
+}
+.table-view .column-header {
+    -fx-background-color: #18181b;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #27272a;
+}
+.table-view .column-header .label {
+    -fx-text-fill: #a1a1aa;
+    -fx-font-weight: bold;
+}
+.table-row-cell {
+    -fx-background-color: #09090b;
+    -fx-border-color: transparent transparent #27272a transparent;
+    -fx-border-width: 0 0 1 0;
+}
+.table-row-cell:hover {
+    -fx-background-color: #18181b;
+}
+.table-row-cell:selected {
+    -fx-background-color: #450a0a; /* red-950 */
+    -fx-text-fill: #ffffff;
+}
+
+/* ---- Text Fields / Inputs ---- */
+.text-field, .password-field, .combo-box, .date-picker, .text-area, .dark-textfield {
+    -fx-background-color: #18181b;
+    -fx-border-color: #27272a;
+    -fx-border-width: 1;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-text-fill: #fafafa;
+    -fx-prompt-text-fill: #52525b; /* zinc-500 */
+    -fx-padding: 10 12 10 12;
+}
+
+.text-field:focused, .password-field:focused, .combo-box:focused, .date-picker:focused, .text-area:focused, .dark-textfield:focused {
+    -fx-border-color: #ef4444; /* red-500 */
+    -fx-background-color: #18181b;
+}
+
+.text-area .content {
+    -fx-background-color: #18181b;
+}
+
+.text-area:focused .content {
+    -fx-background-color: #18181b;
+}
+
+/* Specific class for transparent text areas */
+.dark-textarea {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-text-fill: #d4d4d8;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 14px;
+    -fx-line-spacing: 4px;
+}
+
+.dark-textarea .content {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.dark-textarea .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.dark-textarea .scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.dark-textarea .scroll-pane .content {
+    -fx-background-color: transparent;
+}
+
+/* Custom ScrollBar for a cleaner look */
+.dark-textarea .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 6px;
+}
+
+.dark-textarea .scroll-bar:vertical .thumb {
+    -fx-background-color: #3f3f46;
+    -fx-background-radius: 3px;
+}
+
+.dark-textarea .scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #52525b;
+}
+
+/* Remove default highlight/focus border for the reading area */
+.dark-textarea:focused {
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.dark-textarea:focused .content {
+    -fx-background-color: transparent;
+}
+
+/* ---- ComboBox ---- */
+.dark-combo > .combo-box-base {
+    -fx-background-color: #0e0e0e;
+    -fx-text-fill: #dddddd;
+    -fx-border-color: #222222;
+    -fx-border-width: 1;
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 4 8 4 8;
+    -fx-pref-height: 36px;
+}
+.dark-combo > .combo-box-base:focused {
+    -fx-border-color: #e8002d;
+}
+.dark-combo > .combo-box-base > .label {
+    -fx-text-fill: #dddddd;
+}
+.dark-combo > .combo-box-base > .arrow-button {
+    -fx-background-color: transparent;
+}
+.dark-combo > .combo-box-base > .arrow-button > .arrow {
+    -fx-background-color: #666666;
+}
+.dark-combo .combo-box-popup > .list-view {
+    -fx-background-color: #111111;
+    -fx-border-color: #e8002d;
+    -fx-border-width: 1;
+}
+.dark-combo .combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell {
+    -fx-background-color: #111111;
+    -fx-text-fill: #cccccc;
+    -fx-padding: 8 12 8 12;
+}
+.dark-combo .combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:hover {
+    -fx-background-color: #1e1e1e;
+    -fx-text-fill: #ffffff;
+}
+.dark-combo .combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:selected {
+    -fx-background-color: #1e0000;
+}
+
+/* ---- TableView ---- */
+.dark-table {
+    -fx-background-color: #0e0e0e;
+    -fx-border-color: #1e1e1e;
+    -fx-table-cell-border-color: #181818;
+}
+.dark-table > .column-header-background {
+    -fx-background-color: #18181b;
+}
+.dark-table > .column-header-background > .nested-column-header > .column-header {
+    -fx-background-color: transparent;
+}
+.dark-table .column-header,
+.dark-table .filler {
+    -fx-background-color: #111111;
+    -fx-border-color: transparent transparent #1e1e1e transparent;
+    -fx-border-width: 0 0 1 0;
+}
+.dark-table .column-header .label {
+    -fx-text-fill: #a1a1aa;
+    -fx-font-weight: bold;
+    -fx-font-size: 10px;
+    -fx-padding: 14 8 14 8;
+    -fx-alignment: CENTER-LEFT;
+}
+.dark-table .table-row-cell {
+    -fx-background-color: #09090b;
+    -fx-border-color: transparent transparent #27272a transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-pref-height: 44px;
+}
+.dark-table .table-row-cell:odd {
+    -fx-background-color: #111111;
+}
+.dark-table .table-row-cell:selected {
+    -fx-background-color: #450a0a; /* red-950 */
+    -fx-text-fill: #ffffff;
+}
+.dark-table .table-row-cell:hover {
+    -fx-background-color: #161616;
+}
+.dark-table .table-cell {
+    -fx-text-fill: #cccccc;
+    -fx-font-size: 13px;
+    -fx-padding: 10 8 10 8;
+    -fx-alignment: CENTER-LEFT;
+}
+.dark-table .current-fan-row {
+    -fx-background-color: #0e0a00;
+    -fx-border-color: transparent transparent #1a1400 #c9a227;
+    -fx-border-width: 0 0 1 4;
+}
+
+/* ---- TabPane ---- */
+.dark-tab-pane > .tab-header-area > .tab-header-background {
+    -fx-background-color: #0d0d0d;
+    -fx-border-color: transparent transparent #1e1e1e transparent;
+    -fx-border-width: 0 0 1 0;
+}
+.dark-tab-pane > .tab-header-area > .headers-region > .tab {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-padding: 12 24 12 24;
+}
+.dark-tab-pane > .tab-header-area > .headers-region > .tab .tab-label {
+    -fx-text-fill: #555555;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+.dark-tab-pane > .tab-header-area > .headers-region > .tab:selected {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #e8002d transparent;
+    -fx-border-width: 0 0 2 0;
+}
+.dark-tab-pane > .tab-header-area > .headers-region > .tab:selected .tab-label {
+    -fx-text-fill: #ffffff;
+}
+.dark-tab-pane > .tab-header-area > .headers-region > .tab:hover .tab-label {
+    -fx-text-fill: #cccccc;
+}
+.dark-tab-pane > .tab-content-area {
+    -fx-background-color: #080808;
+    -fx-padding: 0;
+}
+
+/* ---- Reaction Cards ---- */
+.reaction-card {
+    -fx-background-color: #111111;
+    -fx-border-color: #1e1e1e;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 14 18 14 18;
+    -fx-background-radius: 0;
+}
+.reaction-card:hover {
+    -fx-background-color: #151515;
+}
+.reaction-pinned {
+    -fx-border-color: #c9a227;
+    -fx-border-width: 0 0 0 4;
+    -fx-background-color: #0e0900;
+}
+.reaction-emoji  { -fx-font-size: 20px; }
+.reaction-fan    { -fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-font-size: 13px; }
+.reaction-time   { -fx-text-fill: #444444; -fx-font-size: 11px; }
+.reaction-comment {
+    -fx-text-fill: #999999;
+    -fx-font-size: 13px;
+    -fx-padding: 4 0 0 28;
+    -fx-wrap-text: true;
+}
+
+/* ---- Notification Cards ---- */
+.notif-card-unread {
+    -fx-background-color: linear-gradient(to right, #180000 0%, #111111 100%);
+    -fx-border-color: #e8002d;
+    -fx-border-width: 0 0 0 4;
+    -fx-padding: 14 18 14 14;
+    -fx-cursor: hand;
+    -fx-background-radius: 0;
+}
+.notif-card-read {
+    -fx-background-color: #111111;
+    -fx-border-color: #1e1e1e;
+    -fx-border-width: 0 0 0 2;
+    -fx-padding: 14 18 14 14;
+    -fx-cursor: hand;
+    -fx-background-radius: 0;
+}
+.notif-card-unread:hover { -fx-background-color: linear-gradient(to right, #1e0000 0%, #161616 100%); }
+.notif-card-read:hover   { -fx-background-color: #161616; }
+.notif-icon         { -fx-font-size: 16px; }
+.notif-title        { -fx-text-fill: #888888; -fx-font-size: 13px; -fx-font-weight: bold; }
+.notif-title-unread { -fx-text-fill: #ffffff;  -fx-font-size: 13px; -fx-font-weight: bold; }
+.notif-time         { -fx-text-fill: #3a3a3a; -fx-font-size: 11px; }
+.notif-message      { -fx-text-fill: #666666; -fx-font-size: 12px; -fx-wrap-text: true; }
+
+/* ---- Match / Prediction Cards ---- */
+.match-card {
+    -fx-background-color: #111111;
+    -fx-border-color: #1e1e1e #1e1e1e #1e1e1e #e8002d;
+    -fx-border-width: 0 0 1 4;
+    -fx-background-radius: 0;
+    -fx-padding: 16 20 16 16;
+}
+.match-card:hover {
+    -fx-background-color: #161616;
+    -fx-border-color: #2a2a2a #2a2a2a #2a2a2a #e8002d;
+}
+.match-title {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
+.match-vs {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #e8002d;
+}
+.fighter-name-red {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
+.fighter-name-blue {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #aaaaaa;
+}
+.prediction-locked {
+    -fx-text-fill: #c9a227;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+/* ---- Role Picker ---- */
+.role-picker-root {
+    -fx-background-color: #080808;
+}
+.role-half {
+    -fx-cursor: hand;
+}
+.role-card {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-cursor: hand;
+    -fx-alignment: CENTER;
+}
+.role-card:hover {
+    -fx-background-color: #130000;
+    -fx-effect: dropshadow(gaussian, #e8002d44, 30, 0.4, 0, 0);
+}
+.role-name {
+    -fx-font-size: 52px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
+.role-desc {
+    -fx-font-size: 13px;
+    -fx-text-fill: #555555;
+    -fx-text-alignment: CENTER;
+    -fx-wrap-text: true;
+    -fx-alignment: CENTER;
+}
+.hero-title {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
+.hero-title-accent {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #e8002d;
+}
+.hero-tagline {
+    -fx-font-size: 11px;
+    -fx-text-fill: #444444;
+    -fx-font-weight: bold;
+}
+
+/* ---- ScrollPane ---- */
+.dark-scroll {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+.dark-scroll > .viewport {
+    -fx-background-color: transparent;
+}
+.dark-scroll > .scroll-bar {
+    -fx-background-color: #0a0a0a;
+}
+.dark-scroll > .scroll-bar > .thumb {
+    -fx-background-color: #222222;
+    -fx-background-radius: 0;
+}
+.dark-scroll > .scroll-bar > .thumb:hover {
+    -fx-background-color: #e8002d;
+}
+
+/* ---- Toggle Buttons ---- */
+.reaction-toggle {
+    -fx-background-color: #111111;
+    -fx-text-fill: #666666;
+    -fx-border-color: #222222;
+    -fx-border-width: 1;
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 8 16 8 16;
+    -fx-font-size: 18px;
+    -fx-cursor: hand;
+}
+.reaction-toggle:selected {
+    -fx-background-color: #e8002d;
+    -fx-text-fill: white;
+    -fx-border-color: #e8002d;
+    -fx-effect: dropshadow(gaussian, #e8002d66, 8, 0.3, 0, 0);
+}
+.reaction-toggle:hover {
+    -fx-border-color: #e8002d;
+    -fx-text-fill: #ffffff;
+}
+
+/* ---- Spinner ---- */
+.dark-spinner > .text-field {
+    -fx-background-color: #0e0e0e;
+    -fx-text-fill: white;
+    -fx-border-color: #222222;
+    -fx-border-width: 1;
+}
+.dark-spinner > .increment-arrow-button,
+.dark-spinner > .decrement-arrow-button {
+    -fx-background-color: #111111;
+    -fx-border-color: #222222;
+}
+.dark-spinner > .increment-arrow-button:hover,
+.dark-spinner > .decrement-arrow-button:hover {
+    -fx-background-color: #1a1a1a;
+}
+.dark-spinner > .increment-arrow-button > .increment-arrow,
+.dark-spinner > .decrement-arrow-button > .decrement-arrow {
+    -fx-background-color: #666666;
+}
+
+/* ---- Separator ---- */
+.separator .line {
+    -fx-border-color: #1a1a1a;
+    -fx-border-width: 1 0 0 0;
+}
+
+/* ---- Status Badges ---- */
+.status-published  { -fx-text-fill: #22cc66; -fx-font-weight: bold; -fx-font-size: 11px; }
+.status-draft      { -fx-text-fill: #cccc22; -fx-font-weight: bold; -fx-font-size: 11px; }
+.status-archived   { -fx-text-fill: #444444; -fx-font-weight: bold; -fx-font-size: 11px; }
+.status-confirmed  { -fx-text-fill: #22cc66; -fx-font-weight: bold; -fx-font-size: 11px; }
+.status-cancelled  { -fx-text-fill: #e8002d; -fx-font-weight: bold; -fx-font-size: 11px; }
+
+/* ---- Empty State ---- */
+.empty-state {
+    -fx-text-fill: #333333;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 40;
+    -fx-alignment: CENTER;
+}
+
+/* ---- Dark ListView ---- */
+.dark-list {
+    -fx-background-color: #0a0a0a;
+    -fx-border-color: #1e1e1e;
+    -fx-border-width: 1;
+}
+.dark-list .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #777777;
+    -fx-padding: 12 16 12 16;
+    -fx-border-color: transparent transparent #141414 transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-font-size: 13px;
+}
+.dark-list .list-cell:selected {
+    -fx-background-color: #150000;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: transparent transparent #141414 #dc2626; /* red-600 */
+    -fx-border-width: 0 0 1 4;
+}
+.dark-list .list-cell:hover {
+    -fx-background-color: #0e0e0e;
+    -fx-text-fill: #cccccc;
+}
+
+/* ---- News Updates ListView ---- */
+.news-list {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+}
+.news-list .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #fafafa;
+    -fx-padding: 16 0 16 0;
+    -fx-border-color: transparent transparent #27272a transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+.news-list .list-cell:selected {
+    -fx-background-color: transparent;
+    -fx-text-fill: #dc2626;
+}
+.news-list .list-cell:hover {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ef4444;
+}
+
+/* ---- Leaderboard (UFC Rankings numbered style) ---- */
+.rank-badge {
+    -fx-background-color: #e8002d;
+    -fx-text-fill: white;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-min-width: 24px;
+    -fx-min-height: 24px;
+    -fx-alignment: CENTER;
+    -fx-background-radius: 0;
+}
+.rank-badge-gold   { -fx-background-color: #c9a227; -fx-text-fill: #080808; }
+.rank-badge-silver { -fx-background-color: #888888; }
+.rank-badge-bronze { -fx-background-color: #cd7f32; }
+/* Legacy rank classes kept for controller compatibility */
+.rank-1 { -fx-text-fill: #c9a227; -fx-font-weight: bold; -fx-font-size: 15px; }
+.rank-2 { -fx-text-fill: #aaaaaa; -fx-font-weight: bold; }
+.rank-3 { -fx-text-fill: #cd7f32; -fx-font-weight: bold; }
+
+/* ---- News Grid ScrollPane ---- */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+.scroll-pane > .scroll-bar:vertical {
+    -fx-background-color: #09090b;
+    -fx-pref-width: 8px;
+}
+.scroll-pane > .scroll-bar:vertical .thumb {
+    -fx-background-color: #27272a;
+    -fx-background-radius: 4;
+}
+.scroll-pane > .scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #dc2626;
+}
+.scroll-pane > .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+}
+.scroll-pane > .scroll-bar:vertical .increment-button,
+.scroll-pane > .scroll-bar:vertical .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+.scroll-pane > .scroll-bar:vertical .increment-arrow,
+.scroll-pane > .scroll-bar:vertical .decrement-arrow {
+    -fx-shape: "";
+    -fx-padding: 0;
+}
+
+/* ============================================================
+   Search Suggestion Dropdown — ContextMenu (.search-suggestions)
+   ============================================================ */
+
+/* Popup container */
+.search-suggestions.context-menu {
+    -fx-background-color: #0a0a0a;
+    -fx-border-color: #27272a;
+    -fx-border-width: 1px;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-padding: 0;
+    -fx-effect: dropshadow(gaussian, rgba(220, 38, 38, 0.15), 16, 0.0, 0, 4);
+}
+
+/* Remove the default inner separator/padding container JavaFX adds */
+.search-suggestions.context-menu > .scroll-arrow.increment-arrow-button,
+.search-suggestions.context-menu > .scroll-arrow.decrement-arrow-button {
+    -fx-pref-height: 0;
+    -fx-opacity: 0;
+}
+
+.search-suggestions .separator {
+    -fx-padding: 0;
+    -fx-pref-height: 0;
+    -fx-opacity: 0;
+}
+
+/* Each suggestion row */
+.search-suggestions .menu-item {
+    -fx-background-color: #0a0a0a;
+    -fx-padding: 11px 16px 11px 16px;
+    -fx-border-color: transparent transparent #18181b transparent;
+    -fx-border-width: 0 0 1px 0;
+    -fx-cursor: hand;
+}
+
+/* Text label inside each row */
+.search-suggestions .menu-item .label {
+    -fx-text-fill: #a1a1aa;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+/* Hover / keyboard-focus state */
+.search-suggestions .menu-item:focused {
+    -fx-background-color: #18181b;
+    -fx-border-color: #dc2626 transparent #18181b transparent;
+    -fx-border-width: 0 0 1px 3px;
+    -fx-padding: 11px 16px 11px 13px; /* compensate for 3px left border */
+}
+
+.search-suggestions .menu-item:focused .label {
+    -fx-text-fill: #fafafa;
+}
+
+/* Remove graphic area gap when no graphic is set */
+.search-suggestions .menu-item > .left-container {
+    -fx-padding: 0;
+}
+

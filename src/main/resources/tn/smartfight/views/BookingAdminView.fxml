@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21"
+      fx:controller="tn.smartfight.controllers.BookingAdminController"
+      stylesheets="@../styles/smartfight.css"
+      style="-fx-background-color: #080808;"
+      spacing="0" prefWidth="1060" prefHeight="800">
+
+    <!-- Header -->
+    <HBox styleClass="page-header" alignment="CENTER_LEFT" spacing="16">
+        <VBox spacing="4">
+            <Label text="BOOKING MANAGEMENT" styleClass="page-title"/>
+            <Label text="Monitor ticket sales and manage reservations" styleClass="page-subtitle"/>
+        </VBox>
+    </HBox>
+
+    <!-- Stats Row -->
+    <HBox spacing="20" style="-fx-padding: 24 32 24 32;">
+        <VBox styleClass="stat-card stat-card-gold" spacing="4">
+            <Label text="TOTAL BOOKINGS" styleClass="stat-label"/>
+            <Label fx:id="lblTotal" text="0" styleClass="stat-value"/>
+        </VBox>
+        <VBox styleClass="stat-card stat-card-green" spacing="4">
+            <Label text="CONFIRMED" styleClass="stat-label"/>
+            <Label fx:id="lblConfirmed" text="0" styleClass="stat-value"/>
+        </VBox>
+        <VBox styleClass="stat-card stat-card-red" spacing="4">
+            <Label text="CANCELLED" styleClass="stat-label"/>
+            <Label fx:id="lblCancelled" text="0" styleClass="stat-value"/>
+        </VBox>
+        <VBox styleClass="stat-card stat-card-blue" spacing="4">
+            <Label text="TOTAL REVENUE" styleClass="stat-label"/>
+            <Label fx:id="lblRevenue" text="0.00 TND" styleClass="stat-value"
+                   style="-fx-font-size: 26px;"/>
+        </VBox>
+    </HBox>
+
+    <!-- Filters -->
+    <HBox spacing="12" alignment="CENTER_LEFT" style="-fx-padding: 0 32 16 32;">
+        <Label text="FILTER:" style="-fx-text-fill:#555555; -fx-font-size:11px; -fx-font-weight:bold;"/>
+        <ComboBox fx:id="cbEventFilter"  styleClass="dark-combo" prefWidth="220" promptText="All Events"/>
+        <ComboBox fx:id="cbStatusFilter" styleClass="dark-combo" prefWidth="140" promptText="All Status"/>
+    </HBox>
+
+    <!-- Table -->
+    <VBox VBox.vgrow="ALWAYS" style="-fx-padding: 0 32 32 32;">
+        <TableView fx:id="bookingsTable" styleClass="dark-table" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colEvent"   text="EVENT"     prefWidth="200"/>
+                <TableColumn fx:id="colFan"     text="FAN"       prefWidth="140"/>
+                <TableColumn fx:id="colEmail"   text="EMAIL"     prefWidth="180"/>
+                <TableColumn fx:id="colType"    text="TYPE"      prefWidth="90"/>
+                <TableColumn fx:id="colQty"     text="QTY"       prefWidth="55"/>
+                <TableColumn fx:id="colPrice"   text="TOTAL"     prefWidth="100"/>
+                <TableColumn fx:id="colDate"    text="DATE"      prefWidth="100"/>
+                <TableColumn fx:id="colStatus"  text="STATUS"    prefWidth="100"/>
+                <TableColumn fx:id="colActions" text="ACTIONS"   prefWidth="140"/>
+            </columns>
+        </TableView>
+    </VBox>
+</VBox>

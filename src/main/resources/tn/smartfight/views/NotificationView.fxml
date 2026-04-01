@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21"
+            fx:controller="tn.smartfight.controllers.NotificationController"
+            stylesheets="@../styles/smartfight.css"
+            style="-fx-background-color: #080808;"
+            prefWidth="1060" prefHeight="800">
+
+    <!-- LEFT: Notifications list -->
+    <left>
+        <VBox spacing="0" prefWidth="420"
+              style="-fx-background-color: #0a0a0a; -fx-border-color: transparent #1e1e1e transparent transparent; -fx-border-width: 0 1 0 0;">
+
+            <HBox styleClass="section-header" alignment="CENTER_LEFT"
+                  style="-fx-padding: 20 16 12 20; -fx-background-color: #0a0a0a;" spacing="12">
+                <Label text="NOTIFICATIONS" styleClass="section-header-label" HBox.hgrow="ALWAYS"/>
+                <Button fx:id="btnShowPreferences" text="PREFERENCES"
+                        styleClass="btn-secondary"
+                        style="-fx-padding: 6 14; -fx-font-size: 11px;"/>
+            </HBox>
+
+            <HBox alignment="CENTER_LEFT" spacing="12"
+                  style="-fx-padding: 10 16 10 20;
+                         -fx-border-color: transparent transparent #141414 transparent; -fx-border-width: 0 0 1 0;">
+                <Label fx:id="lblUnreadCount" styleClass="label-meta" text=""/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button fx:id="btnMarkAllRead" text="MARK ALL READ" styleClass="btn-secondary"
+                        style="-fx-padding: 6 14; -fx-font-size: 11px;" disable="true"/>
+            </HBox>
+
+            <ScrollPane styleClass="dark-scroll" VBox.vgrow="ALWAYS" fitToWidth="true">
+                <VBox fx:id="notificationsContainer" spacing="0"
+                      style="-fx-padding: 4 0 20 0;"/>
+            </ScrollPane>
+        </VBox>
+    </left>
+
+    <!-- CENTER: Preferences Form -->
+    <center>
+        <VBox fx:id="preferencesForm" spacing="20" visible="false" managed="false"
+              style="-fx-padding: 36 40 36 40;">
+
+            <HBox styleClass="section-header" alignment="CENTER_LEFT">
+                <Label text="FAN PREFERENCES" styleClass="section-header-label"/>
+            </HBox>
+
+            <VBox spacing="8">
+                <Label text="FAVORITE DISCIPLINE"
+                       style="-fx-font-size: 11px; -fx-text-fill: #555555; -fx-font-weight: bold;"/>
+                <ComboBox fx:id="cbDiscipline" styleClass="dark-combo" prefWidth="320"
+                          promptText="No preference"/>
+            </VBox>
+
+            <VBox spacing="8">
+                <Label text="FAVORITE FIGHTER"
+                       style="-fx-font-size: 11px; -fx-text-fill: #555555; -fx-font-weight: bold;"/>
+                <ComboBox fx:id="cbFighter" styleClass="dark-combo" prefWidth="320"
+                          promptText="No preference"/>
+            </VBox>
+
+            <Button fx:id="btnSavePreferences" text="SAVE PREFERENCES"
+                    styleClass="btn-primary" prefWidth="220"/>
+
+            <Label fx:id="lblPrefResult" text=""
+                   style="-fx-text-fill:#c9a227; -fx-font-size:13px; -fx-font-weight:bold;"/>
+
+            <Region VBox.vgrow="ALWAYS"/>
+            <Label text="Your preferences personalise notifications&#10;about new events and fighters."
+                   style="-fx-text-fill:#333333; -fx-font-size:12px;" wrapText="true"/>
+        </VBox>
+    </center>
+</BorderPane>

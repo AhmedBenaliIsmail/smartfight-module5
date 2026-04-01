@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21"
+            fx:controller="tn.smartfight.controllers.ReactionAdminController"
+            stylesheets="@../styles/smartfight.css"
+            style="-fx-background-color: #080808;"
+            prefWidth="1060" prefHeight="800">
+
+    <!-- LEFT: Fight list -->
+    <left>
+        <VBox spacing="0" prefWidth="300"
+              style="-fx-background-color: #0a0a0a; -fx-border-color: transparent #1e1e1e transparent transparent; -fx-border-width: 0 1 0 0;">
+
+            <HBox styleClass="section-header" alignment="CENTER_LEFT"
+                  style="-fx-padding: 20 16 12 20; -fx-background-color: #0a0a0a;">
+                <Label text="REACTION MODERATION" styleClass="section-header-label"/>
+            </HBox>
+
+            <HBox styleClass="section-header" alignment="CENTER_LEFT"
+                  style="-fx-padding: 12 16 8 16; -fx-background-color: #0a0a0a;">
+                <Label text="SELECT FIGHT" styleClass="section-header-label"
+                       style="-fx-font-size: 11px; -fx-text-fill: #555555;"/>
+            </HBox>
+
+            <ListView fx:id="fightList" styleClass="dark-list" VBox.vgrow="ALWAYS" prefHeight="600"/>
+        </VBox>
+    </left>
+
+    <!-- CENTER -->
+    <center>
+        <VBox spacing="20" style="-fx-padding: 32 40 32 40;">
+            <Label fx:id="lblFightTitle" text="Select a fight" styleClass="page-title"
+                   style="-fx-font-size: 22px;"/>
+            <Label fx:id="lblTotalReactions" styleClass="label-meta" text=""/>
+
+            <HBox styleClass="section-header" alignment="CENTER_LEFT">
+                <Label text="EMOTION BREAKDOWN" styleClass="section-header-label"/>
+            </HBox>
+            <VBox fx:id="reactionStats" spacing="8"
+                  style="-fx-background-color:#0e0e0e; -fx-padding:16; -fx-border-color:#1e1e1e; -fx-border-width:1;"/>
+
+            <Label fx:id="lblPinResult" text=""
+                   style="-fx-text-fill:#c9a227; -fx-font-size:13px; -fx-font-weight:bold;"/>
+
+            <Region style="-fx-background-color: #1a1a1a; -fx-pref-height: 1; -fx-min-height: 1;"/>
+
+            <HBox styleClass="section-header" alignment="CENTER_LEFT">
+                <Label text="ALL REACTIONS" styleClass="section-header-label"/>
+            </HBox>
+            <ScrollPane styleClass="dark-scroll" VBox.vgrow="ALWAYS" fitToWidth="true">
+                <VBox fx:id="reactionsContainer" spacing="0"
+                      style="-fx-padding: 4 0 20 0;"/>
+            </ScrollPane>
+        </VBox>
+    </center>
+</BorderPane>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21"
+            fx:controller="tn.smartfight.controllers.BlogAdminController"
+            stylesheets="@../styles/smartfight.css"
+            prefWidth="1060" prefHeight="800">
+
+    <!-- LEFT: Article list -->
+    <left>
+        <VBox prefWidth="300"
+              style="-fx-background-color: #0a0a0a; -fx-border-color: transparent #1e1e1e transparent transparent; -fx-border-width: 0 1 0 0;"
+              spacing="0">
+
+            <HBox styleClass="section-header" alignment="CENTER_LEFT"
+                  style="-fx-padding: 20 16 12 20; -fx-background-color: #0a0a0a;">
+                <Label text="ARTICLES" styleClass="section-header-label"/>
+            </HBox>
+
+            <VBox style="-fx-padding: 0 16 14 16;" spacing="8">
+                <Button text="NEW ARTICLE" styleClass="btn-primary" onAction="#onNewArticle" maxWidth="Infinity"/>
+                <ComboBox fx:id="cbStatusFilter" styleClass="dark-combo" maxWidth="Infinity" promptText="All Status"/>
+                <TextField fx:id="txtSearch" styleClass="dark-textfield" promptText="Search..." onAction="#onSearch"/>
+            </VBox>
+
+            <Region style="-fx-background-color: #1a1a1a; -fx-pref-height: 1; -fx-min-height: 1;"/>
+            <ListView fx:id="articleList" styleClass="dark-list" VBox.vgrow="ALWAYS"/>
+        </VBox>
+    </left>
+
+    <!-- CENTER: Reader/Editor -->
+    <center>
+        <StackPane style="-fx-background-color: #080808;">
+
+            <!-- READER PANEL -->
+            <VBox fx:id="readerPanel" style="-fx-padding: 40 60 40 60;" spacing="24">
+                <VBox spacing="8">
+                    <Label fx:id="lblTitle" styleClass="label-title"
+                           text="Select an article" wrapText="true"
+                           style="-fx-font-size: 36px; -fx-font-weight: 900; -fx-font-style: italic; -fx-text-fill: #fafafa;"/>
+                    <HBox spacing="16" alignment="CENTER_LEFT">
+                        <Label fx:id="lblStatus" style="-fx-font-size: 11px; -fx-font-weight: 900; -fx-text-fill: white; -fx-background-color: #dc2626; -fx-padding: 4 10; -fx-background-radius: 4;"/>
+                        <Label fx:id="lblMeta" styleClass="label-meta" style="-fx-font-size: 12px; -fx-text-fill: #71717a; -fx-font-weight: bold;"/>
+                    </HBox>
+                </VBox>
+
+                <Region style="-fx-background-color: #27272a; -fx-pref-height: 1; -fx-min-height: 1;"/>
+
+                <TextArea fx:id="txtContentReader" styleClass="dark-textarea"
+                          editable="false" wrapText="true" VBox.vgrow="ALWAYS"
+                          style="-fx-background-color: transparent;"/>
+
+                <HBox spacing="12" alignment="CENTER_LEFT" style="-fx-padding: 20 0 0 0; -fx-border-color: #27272a transparent transparent transparent; -fx-border-width: 1 0 0 0;">
+                    <Button fx:id="btnEdit"    text="EDIT"    styleClass="btn-secondary" onAction="#onEdit"    disable="true" style="-fx-min-width: 100;"/>
+                    <Button fx:id="btnPublish" text="PUBLISH" styleClass="btn-primary"   onAction="#onPublish" disable="true" style="-fx-min-width: 120;"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Button fx:id="btnDelete"  text="DELETE"  styleClass="btn-danger"    onAction="#onDelete"  disable="true" style="-fx-min-width: 100;"/>
+                </HBox>
+            </VBox>
+
+            <!-- EDITOR PANEL -->
+            <VBox fx:id="editorPanel" style="-fx-padding: 36 40 36 40;" spacing="12"
+                  visible="false" managed="false">
+                <HBox styleClass="section-header" alignment="CENTER_LEFT" style="-fx-padding: 0 0 8 0;">
+                    <Label text="ARTICLE EDITOR" styleClass="section-header-label"/>
+                </HBox>
+                <TextField fx:id="txtEditorTitle" styleClass="dark-textfield" promptText="Article title *"/>
+                <HBox spacing="12">
+                    <ComboBox fx:id="cbEditorCategory" styleClass="dark-combo" promptText="Category"
+                              HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                    <ComboBox fx:id="cbEditorStatus"   styleClass="dark-combo" promptText="Status"
+                              HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                </HBox>
+                <TextField fx:id="txtEditorSummary" styleClass="dark-textfield" promptText="Short summary"/>
+
+                <!-- Media Upload Section -->
+                <HBox spacing="16" style="-fx-padding: 8 0;">
+                    <!-- Image Upload -->
+                    <VBox spacing="8" HBox.hgrow="ALWAYS" style="-fx-background-color: #18181b; -fx-padding: 16; -fx-background-radius: 12; -fx-border-color: #27272a; -fx-border-radius: 12; -fx-border-width: 1;">
+                        <Label text="COVER IMAGE" style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #a1a1aa;"/>
+                        <StackPane fx:id="videoPreviewPane" style="-fx-background-color: #09090b; -fx-background-radius: 8; -fx-min-height: 120; -fx-max-height: 160;" maxWidth="Infinity">
+                            <ImageView fx:id="imgPreview" fitWidth="260" fitHeight="160" preserveRatio="true"/>
+                        </StackPane>
+                        <HBox spacing="8" alignment="CENTER_LEFT">
+                            <Button text="CHOOSE IMAGE" styleClass="btn-secondary" onAction="#onChooseImage"
+                                    style="-fx-font-size: 11px; -fx-padding: 8 16;"/>
+                            <Label fx:id="lblImagePath" text="No image" style="-fx-font-size: 11px; -fx-text-fill: #71717a;"/>
+                        </HBox>
+                    </VBox>
+                    <!-- Video Upload -->
+                    <VBox spacing="8" HBox.hgrow="ALWAYS" style="-fx-background-color: #18181b; -fx-padding: 16; -fx-background-radius: 12; -fx-border-color: #27272a; -fx-border-radius: 12; -fx-border-width: 1;">
+                        <Label text="VIDEO" style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #a1a1aa;"/>
+                        <StackPane style="-fx-background-color: #09090b; -fx-background-radius: 8; -fx-min-height: 120; -fx-max-height: 160; -fx-alignment: CENTER;" maxWidth="Infinity">
+                            <Label text="&#9654;" style="-fx-font-size: 40px; -fx-text-fill: #dc2626;"/>
+                        </StackPane>
+                        <HBox spacing="8" alignment="CENTER_LEFT">
+                            <Button text="CHOOSE VIDEO" styleClass="btn-secondary" onAction="#onChooseVideo"
+                                    style="-fx-font-size: 11px; -fx-padding: 8 16;"/>
+                            <Label fx:id="lblVideoPath" text="No video" style="-fx-font-size: 11px; -fx-text-fill: #71717a;"/>
+                        </HBox>
+                    </VBox>
+                </HBox>
+
+                <TextArea fx:id="txtEditorContent" styleClass="dark-textarea"
+                          promptText="Article content..." wrapText="true"
+                          prefRowCount="14" VBox.vgrow="ALWAYS"/>
+                <HBox spacing="10">
+                    <Button fx:id="btnSave"   text="SAVE"   styleClass="btn-primary"   onAction="#onSave"/>
+                    <Button fx:id="btnCancel" text="CANCEL" styleClass="btn-secondary" onAction="#onCancel"/>
+                </HBox>
+            </VBox>
+
+        </StackPane>
+    </center>
+</BorderPane>

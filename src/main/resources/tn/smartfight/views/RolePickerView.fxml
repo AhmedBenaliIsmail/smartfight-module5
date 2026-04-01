@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21"
+      fx:controller="tn.smartfight.controllers.RolePickerController"
+      styleClass="role-picker-root"
+      stylesheets="@../styles/smartfight.css"
+      prefWidth="1280" prefHeight="800" spacing="0">
+
+    <!-- Top Header Bar -->
+    <HBox alignment="CENTER" spacing="0"
+          style="-fx-background-color: #0a0a0a; -fx-pref-height: 72px; -fx-min-height: 72px;
+                 -fx-border-color: transparent transparent #e8002d transparent; -fx-border-width: 0 0 2 0;">
+        <HBox alignment="CENTER" spacing="0">
+            <Label text="FIGHT" styleClass="hero-title"/>
+            <Label text="SPHERE" styleClass="hero-title-accent"/>
+            <Label text="  AI" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #333333;"/>
+        </HBox>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label text="SELECT YOUR ROLE TO CONTINUE"
+               style="-fx-font-size: 11px; -fx-text-fill: #444444; -fx-font-weight: bold; -fx-padding: 0 40 0 0;"/>
+    </HBox>
+
+    <!-- Split Screen -->
+    <HBox VBox.vgrow="ALWAYS" spacing="0">
+
+        <!-- ADMIN Half -->
+        <VBox fx:id="btnAdmin"
+              HBox.hgrow="ALWAYS"
+              alignment="CENTER" spacing="20"
+              onMouseClicked="#onAdminClicked"
+              style="-fx-background-color: linear-gradient(to bottom right, #160000 0%, #080808 60%);
+                     -fx-cursor: hand; -fx-padding: 0 0 0 0;">
+            <Label text="ADMIN"
+                   style="-fx-font-size: 64px; -fx-font-weight: bold; -fx-text-fill: #ffffff;"/>
+            <Region style="-fx-background-color: #e8002d; -fx-pref-height: 2; -fx-min-height: 2; -fx-max-width: 80;"/>
+            <Label text="Content Management&#10;Event Control &amp; Analytics"
+                   style="-fx-font-size: 13px; -fx-text-fill: #444444; -fx-text-alignment: CENTER;"
+                   alignment="CENTER" wrapText="true"/>
+            <Button text="ENTER ADMIN" styleClass="btn-primary"
+                    style="-fx-padding: 12 32 12 32; -fx-font-size: 13px;"
+                    onAction="#onAdminClicked"/>
+        </VBox>
+
+        <!-- Divider -->
+        <Region style="-fx-background-color: #e8002d; -fx-pref-width: 2; -fx-min-width: 2;"/>
+
+        <!-- FAN Half -->
+        <VBox fx:id="btnFan"
+              HBox.hgrow="ALWAYS"
+              alignment="CENTER" spacing="20"
+              onMouseClicked="#onFanClicked"
+              style="-fx-background-color: linear-gradient(to bottom left, #0c0900 0%, #080808 60%);
+                     -fx-cursor: hand; -fx-padding: 0 0 0 0;">
+            <Label text="FAN"
+                   style="-fx-font-size: 64px; -fx-font-weight: bold; -fx-text-fill: #ffffff;"/>
+            <Region style="-fx-background-color: #c9a227; -fx-pref-height: 2; -fx-min-height: 2; -fx-max-width: 60;"/>
+            <Label text="News &amp; Blog · Bookings&#10;Predictions &amp; Reactions"
+                   style="-fx-font-size: 13px; -fx-text-fill: #444444; -fx-text-alignment: CENTER;"
+                   alignment="CENTER" wrapText="true"/>
+            <Button text="ENTER AS FAN" styleClass="btn-gold"
+                    style="-fx-padding: 12 32 12 32; -fx-font-size: 13px;"
+                    onAction="#onFanClicked"/>
+        </VBox>
+
+    </HBox>
+
+    <!-- Footer -->
+    <HBox alignment="CENTER"
+          style="-fx-background-color: #0a0a0a; -fx-pref-height: 36px; -fx-min-height: 36px;
+                 -fx-border-color: #141414 transparent transparent transparent; -fx-border-width: 1 0 0 0;">
+        <Label text="SMARTFIGHT  ·  MODULE 5  ·  2026"
+               style="-fx-text-fill: #2a2a2a; -fx-font-size: 11px; -fx-font-weight: bold;"/>
+    </HBox>
+</VBox>

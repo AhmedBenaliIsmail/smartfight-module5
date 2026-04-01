@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21"
+            fx:controller="tn.smartfight.controllers.ReactionWallController"
+            stylesheets="@../styles/smartfight.css"
+            style="-fx-background-color: #080808;"
+            prefWidth="1060" prefHeight="800">
+
+    <!-- LEFT: Controls & Form -->
+    <left>
+        <VBox spacing="0" prefWidth="320"
+              style="-fx-background-color: #0a0a0a; -fx-border-color: transparent #1e1e1e transparent transparent; -fx-border-width: 0 1 0 0;">
+
+            <HBox styleClass="section-header" alignment="CENTER_LEFT"
+                  style="-fx-padding: 20 16 12 20; -fx-background-color: #0a0a0a;">
+                <Label text="REACTION WALL" styleClass="section-header-label"/>
+            </HBox>
+
+            <VBox spacing="14" style="-fx-padding: 16 16 16 16;">
+                <ComboBox fx:id="cbFight" styleClass="dark-combo" maxWidth="Infinity"
+                          promptText="Select a fight..."/>
+                <Label fx:id="lblFightSummary" styleClass="label-meta" wrapText="true"/>
+
+                <Region style="-fx-background-color: #1a1a1a; -fx-pref-height: 1; -fx-min-height: 1;"/>
+
+                <!-- Community counts -->
+                <Label text="COMMUNITY REACTIONS"
+                       style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #555555;"/>
+                <HBox spacing="16" alignment="CENTER">
+                    <VBox alignment="CENTER" spacing="3">
+                        <Label text="FIRE" style="-fx-font-size:10px; -fx-text-fill:#555555; -fx-font-weight:bold;"/>
+                        <Label fx:id="lblFireCount" text="0"
+                               style="-fx-text-fill:#ffffff; -fx-font-weight:bold; -fx-font-size:18px;"/>
+                    </VBox>
+                    <VBox alignment="CENTER" spacing="3">
+                        <Label text="SHOCK" style="-fx-font-size:10px; -fx-text-fill:#555555; -fx-font-weight:bold;"/>
+                        <Label fx:id="lblShockCount" text="0"
+                               style="-fx-text-fill:#ffffff; -fx-font-weight:bold; -fx-font-size:18px;"/>
+                    </VBox>
+                    <VBox alignment="CENTER" spacing="3">
+                        <Label text="RESPECT" style="-fx-font-size:10px; -fx-text-fill:#555555; -fx-font-weight:bold;"/>
+                        <Label fx:id="lblRespectCount" text="0"
+                               style="-fx-text-fill:#ffffff; -fx-font-weight:bold; -fx-font-size:18px;"/>
+                    </VBox>
+                    <VBox alignment="CENTER" spacing="3">
+                        <Label text="BEAST" style="-fx-font-size:10px; -fx-text-fill:#555555; -fx-font-weight:bold;"/>
+                        <Label fx:id="lblDominantCount" text="0"
+                               style="-fx-text-fill:#ffffff; -fx-font-weight:bold; -fx-font-size:18px;"/>
+                    </VBox>
+                    <VBox alignment="CENTER" spacing="3">
+                        <Label text="???" style="-fx-font-size:10px; -fx-text-fill:#555555; -fx-font-weight:bold;"/>
+                        <Label fx:id="lblControversialCount" text="0"
+                               style="-fx-text-fill:#ffffff; -fx-font-weight:bold; -fx-font-size:18px;"/>
+                    </VBox>
+                </HBox>
+
+                <Region style="-fx-background-color: #1a1a1a; -fx-pref-height: 1; -fx-min-height: 1;"/>
+
+                <!-- Already reacted -->
+                <Label fx:id="lblMyReaction" styleClass="prediction-locked" wrapText="true"
+                       visible="false" managed="false"/>
+
+                <!-- Reaction Form -->
+                <VBox fx:id="reactionForm" spacing="12">
+                    <Label text="YOUR REACTION"
+                           style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #555555;"/>
+                    <HBox spacing="6">
+                        <ToggleButton fx:id="btnFire"          text="🔥" styleClass="reaction-toggle"/>
+                        <ToggleButton fx:id="btnShock"         text="😱" styleClass="reaction-toggle"/>
+                        <ToggleButton fx:id="btnRespect"       text="👏" styleClass="reaction-toggle"/>
+                        <ToggleButton fx:id="btnDominant"      text="💪" styleClass="reaction-toggle"/>
+                        <ToggleButton fx:id="btnControversial" text="🤔" styleClass="reaction-toggle"/>
+                    </HBox>
+                    <TextField fx:id="txtComment" styleClass="dark-textfield"
+                               promptText="Add a comment (optional, max 140)"/>
+                    <HBox alignment="CENTER_LEFT" spacing="12">
+                        <Label fx:id="lblCharCount" text="0/140"
+                               style="-fx-text-fill:#3a3a3a; -fx-font-size:11px;"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="POST" styleClass="btn-primary" onAction="#onPostReaction"/>
+                    </HBox>
+                    <Label fx:id="lblError" text=""
+                           style="-fx-text-fill:#e8002d; -fx-font-size:12px; -fx-font-weight:bold;"/>
+                </VBox>
+            </VBox>
+        </VBox>
+    </left>
+
+    <!-- CENTER: Reaction Wall -->
+    <center>
+        <VBox style="-fx-background-color: #080808;" spacing="0">
+            <HBox styleClass="section-header" alignment="CENTER_LEFT"
+                  style="-fx-padding: 20 32 12 32; -fx-background-color: #080808;">
+                <Label text="LIVE REACTIONS" styleClass="section-header-label"/>
+            </HBox>
+            <ScrollPane styleClass="dark-scroll" VBox.vgrow="ALWAYS" fitToWidth="true"
+                        style="-fx-padding: 0 16 0 16;">
+                <VBox fx:id="reactionsContainer" spacing="0"
+                      style="-fx-padding: 8 24 20 24;"/>
+            </ScrollPane>
+        </VBox>
+    </center>
+</BorderPane>

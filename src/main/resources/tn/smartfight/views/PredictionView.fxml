@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21"
+      fx:controller="tn.smartfight.controllers.PredictionController"
+      stylesheets="@../styles/smartfight.css"
+      style="-fx-background-color: #080808;"
+      spacing="0" prefWidth="1060" prefHeight="800">
+
+    <!-- Header -->
+    <HBox styleClass="page-header" alignment="CENTER_LEFT" spacing="16">
+        <VBox spacing="4">
+            <Label text="PREDICTION LEAGUE" styleClass="page-title"/>
+            <Label text="Pick your winners and climb the leaderboard" styleClass="page-subtitle"/>
+        </VBox>
+    </HBox>
+
+    <TabPane styleClass="dark-tab-pane" VBox.vgrow="ALWAYS">
+
+        <!-- TAB 1: Make Predictions -->
+        <Tab text="MAKE PREDICTIONS" closable="false">
+            <VBox style="-fx-padding: 24 32 32 32;" spacing="16">
+                <HBox spacing="16" alignment="CENTER_LEFT">
+                    <Label text="EVENT"
+                           style="-fx-text-fill:#555555; -fx-font-size:11px; -fx-font-weight:bold;"/>
+                    <ComboBox fx:id="cbPredictEvent" styleClass="dark-combo"
+                              prefWidth="300" promptText="Choose event..."/>
+                </HBox>
+
+                <ScrollPane styleClass="dark-scroll" VBox.vgrow="ALWAYS" fitToWidth="true">
+                    <VBox fx:id="matchupsContainer" spacing="12"
+                          style="-fx-padding: 4 0 8 0;"/>
+                </ScrollPane>
+            </VBox>
+        </Tab>
+
+        <!-- TAB 2: My History -->
+        <Tab text="MY HISTORY" closable="false">
+            <VBox style="-fx-padding: 24 32 32 32;" spacing="20">
+                <!-- Stats bar -->
+                <HBox spacing="32" alignment="CENTER_LEFT">
+                    <VBox spacing="4">
+                        <Label text="TOTAL POINTS"
+                               style="-fx-text-fill:#555555; -fx-font-size:10px; -fx-font-weight:bold;"/>
+                        <Label fx:id="lblTotalPoints" text="0 pts" styleClass="stat-value"
+                               style="-fx-font-size:32px;"/>
+                    </VBox>
+                    <Region style="-fx-background-color: #1e1e1e; -fx-pref-width: 1; -fx-pref-height: 60;"/>
+                    <VBox spacing="4">
+                        <Label text="ACCURACY"
+                               style="-fx-text-fill:#555555; -fx-font-size:10px; -fx-font-weight:bold;"/>
+                        <Label fx:id="lblAccuracy" text="0.0%"
+                               style="-fx-text-fill:#c9a227; -fx-font-size:32px; -fx-font-weight:bold;"/>
+                    </VBox>
+                </HBox>
+
+                <TableView fx:id="historyTable" styleClass="dark-table" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colMatch"   text="MATCH"        prefWidth="260"/>
+                        <TableColumn fx:id="colPick"    text="MY PICK"      prefWidth="160"/>
+                        <TableColumn fx:id="colMethod"  text="METHOD"       prefWidth="110"/>
+                        <TableColumn fx:id="colResult"  text="RESULT"       prefWidth="120"/>
+                        <TableColumn fx:id="colPoints"  text="POINTS"       prefWidth="80"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </Tab>
+
+        <!-- TAB 3: Leaderboard -->
+        <Tab text="LEADERBOARD" closable="false">
+            <VBox style="-fx-padding: 24 32 32 32;" spacing="16">
+                <HBox spacing="12" alignment="CENTER_LEFT">
+                    <ToggleButton fx:id="btnSeasonBoard" text="SEASON 2026"
+                                  styleClass="btn-primary" selected="true"
+                                  style="-fx-font-size: 12px;"/>
+                    <ToggleButton fx:id="btnEventBoard"  text="BY EVENT"
+                                  styleClass="btn-secondary"
+                                  style="-fx-font-size: 12px;"/>
+                    <ComboBox fx:id="cbLeaderboardEvent" styleClass="dark-combo" prefWidth="220"
+                              promptText="Select event..."
+                              style="-fx-margin: 0 0 0 12;"/>
+                </HBox>
+
+                <TableView fx:id="leaderboardTable" styleClass="dark-table" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colRank"         text="RANK"     prefWidth="70"/>
+                        <TableColumn fx:id="colFan"          text="FAN"      prefWidth="200"/>
+                        <TableColumn fx:id="colCorrect"      text="CORRECT"  prefWidth="90"/>
+                        <TableColumn fx:id="colTotal"        text="TOTAL"    prefWidth="80"/>
+                        <TableColumn fx:id="colAccuracy"     text="ACCURACY" prefWidth="100"/>
+                        <TableColumn fx:id="colLeaderPoints" text="POINTS"   prefWidth="90"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </Tab>
+
+    </TabPane>
+</VBox>

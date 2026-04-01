@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21"
+            fx:controller="tn.smartfight.controllers.PredictionAdminController"
+            stylesheets="@../styles/smartfight.css"
+            style="-fx-background-color: #080808;"
+            prefWidth="1060" prefHeight="800">
+
+    <!-- LEFT -->
+    <left>
+        <VBox spacing="0" prefWidth="280"
+              style="-fx-background-color: #0a0a0a; -fx-border-color: transparent #1e1e1e transparent transparent; -fx-border-width: 0 1 0 0;">
+
+            <HBox styleClass="section-header" alignment="CENTER_LEFT"
+                  style="-fx-padding: 20 16 12 20; -fx-background-color: #0a0a0a;">
+                <Label text="PREDICTION ADMIN" styleClass="section-header-label"/>
+            </HBox>
+
+            <VBox style="-fx-padding: 0 16 16 16;" spacing="10">
+                <ComboBox fx:id="cbEvent" styleClass="dark-combo" maxWidth="Infinity" promptText="Select event..."/>
+            </VBox>
+
+            <HBox styleClass="section-header" alignment="CENTER_LEFT"
+                  style="-fx-padding: 8 16 8 16; -fx-background-color: #0a0a0a;">
+                <Label text="ACCEPTED MATCHES" styleClass="section-header-label"/>
+            </HBox>
+
+            <ListView fx:id="matchList" styleClass="dark-list" VBox.vgrow="ALWAYS" prefHeight="500"/>
+        </VBox>
+    </left>
+
+    <!-- CENTER -->
+    <center>
+        <VBox spacing="20" style="-fx-padding: 32 40 32 40;">
+
+            <HBox styleClass="section-header" alignment="CENTER_LEFT">
+                <Label text="COMMUNITY PREDICTION STATS" styleClass="section-header-label"/>
+            </HBox>
+            <Label fx:id="lblTotalPreds" text="Select a match to see stats"
+                   style="-fx-text-fill:#555555; -fx-font-size:13px; -fx-font-weight:bold;"/>
+
+            <HBox spacing="20">
+                <VBox styleClass="stat-card stat-card-red" spacing="4" minWidth="160">
+                    <Label text="FIGHTER 1 PICKED" styleClass="stat-label"/>
+                    <Label fx:id="lblFighter1Pct" text="—" styleClass="stat-value"/>
+                </VBox>
+                <VBox styleClass="stat-card stat-card-blue" spacing="4" minWidth="160">
+                    <Label text="FIGHTER 2 PICKED" styleClass="stat-label"/>
+                    <Label fx:id="lblFighter2Pct" text="—" styleClass="stat-value"/>
+                </VBox>
+            </HBox>
+
+            <HBox styleClass="section-header" alignment="CENTER_LEFT">
+                <Label text="METHOD BREAKDOWN" styleClass="section-header-label"/>
+            </HBox>
+            <VBox fx:id="methodBreakdown" spacing="8"
+                  style="-fx-background-color:#0e0e0e; -fx-border-color:#1e1e1e; -fx-border-width:1; -fx-padding:16;"/>
+
+            <Region style="-fx-background-color: #1a1a1a; -fx-pref-height: 1; -fx-min-height: 1;"/>
+
+            <HBox spacing="12">
+                <Button fx:id="btnLockPredictions" text="LOCK PREDICTIONS" styleClass="btn-secondary"/>
+                <Button fx:id="btnScore"           text="SCORE PREDICTIONS" styleClass="btn-primary"
+                        disable="true"/>
+            </HBox>
+
+            <Label fx:id="lblScoreResult" text="" wrapText="true"
+                   style="-fx-text-fill:#c9a227; -fx-font-size:13px; -fx-font-weight:bold;"/>
+        </VBox>
+    </center>
+</BorderPane>

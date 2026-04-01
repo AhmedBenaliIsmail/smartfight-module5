@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21"
+      fx:controller="tn.smartfight.controllers.NotificationAdminController"
+      stylesheets="@../styles/smartfight.css"
+      style="-fx-background-color: #080808;"
+      spacing="0" prefWidth="1060" prefHeight="800">
+
+    <!-- Header -->
+    <HBox styleClass="page-header" alignment="CENTER_LEFT" spacing="16">
+        <VBox spacing="4">
+            <Label text="NOTIFICATION CENTER" styleClass="page-title"/>
+            <Label text="Broadcast messages to fans" styleClass="page-subtitle"/>
+        </VBox>
+    </HBox>
+
+    <HBox spacing="0" VBox.vgrow="ALWAYS" alignment="TOP_LEFT">
+
+        <!-- Broadcast Form -->
+        <VBox spacing="16" prefWidth="460" maxWidth="480"
+              style="-fx-padding: 32 32 32 32; -fx-border-color: transparent #1e1e1e transparent transparent; -fx-border-width: 0 1 0 0;">
+
+            <HBox styleClass="section-header" alignment="CENTER_LEFT">
+                <Label text="BROADCAST MESSAGE" styleClass="section-header-label"/>
+            </HBox>
+
+            <TextField fx:id="txtBroadcastTitle" styleClass="dark-textfield"
+                       promptText="Notification title *"/>
+            <TextArea fx:id="txtBroadcastMessage" styleClass="dark-textarea"
+                      promptText="Message to send to fans..." wrapText="true" prefRowCount="5"/>
+
+            <VBox spacing="8">
+                <Label text="SEND TO"
+                       style="-fx-font-size: 11px; -fx-text-fill: #555555; -fx-font-weight: bold;"/>
+                <HBox spacing="12">
+                    <ComboBox fx:id="cbTarget" styleClass="dark-combo" prefWidth="160"/>
+                    <ComboBox fx:id="cbTargetDiscipline" styleClass="dark-combo" prefWidth="200"
+                              promptText="Select discipline..." disable="true"/>
+                </HBox>
+            </VBox>
+
+            <Button text="SEND BROADCAST" styleClass="btn-primary"
+                    onAction="#onSendBroadcast" maxWidth="Infinity"
+                    style="-fx-font-size:13px; -fx-padding:13 0;"/>
+
+            <Label fx:id="lblSendResult" text="" wrapText="true"
+                   style="-fx-text-fill:#c9a227; -fx-font-size:13px; -fx-font-weight:bold;"/>
+
+            <Region style="-fx-background-color: #1a1a1a; -fx-pref-height: 1; -fx-min-height: 1;"/>
+
+            <VBox spacing="6">
+                <Label text="TARGETING GUIDE"
+                       style="-fx-font-size: 11px; -fx-text-fill: #555555; -fx-font-weight: bold;"/>
+                <Label text="ALL FANS — broadcasts to every registered fan"
+                       style="-fx-text-fill:#3a3a3a; -fx-font-size:12px;"/>
+                <Label text="BY DISCIPLINE — targets fans with that preference"
+                       style="-fx-text-fill:#3a3a3a; -fx-font-size:12px;"/>
+            </VBox>
+        </VBox>
+
+        <!-- History -->
+        <VBox spacing="0" HBox.hgrow="ALWAYS" style="-fx-padding: 32 32 32 32;">
+            <HBox styleClass="section-header" alignment="CENTER_LEFT" style="-fx-padding: 0 0 12 0;">
+                <Label text="BROADCAST HISTORY" styleClass="section-header-label"/>
+            </HBox>
+            <TableView fx:id="historyTable" styleClass="dark-table" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colTitle"      text="TITLE"       prefWidth="200"/>
+                    <TableColumn fx:id="colType"       text="TYPE"        prefWidth="130"/>
+                    <TableColumn fx:id="colDate"       text="SENT AT"     prefWidth="170"/>
+                    <TableColumn fx:id="colRecipients" text="RECIPIENTS"  prefWidth="100"/>
+                </columns>
+            </TableView>
+        </VBox>
+
+    </HBox>
+</VBox>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21"
+            fx:controller="tn.smartfight.controllers.AdminShellController"
+            stylesheets="@../styles/smartfight.css"
+            prefWidth="1280" prefHeight="800">
+
+    <left>
+        <VBox styleClass="sidebar" spacing="0" prefWidth="256">
+
+            <!-- Branding -->
+            <VBox style="-fx-background-color: transparent; -fx-padding: 24 16 16 20;"
+                  spacing="0">
+                <Label text="SMARTFIGHT" styleClass="app-title" style="-fx-font-style: italic; -fx-font-weight: 900; -fx-font-size: 20px;"/>
+                <Label text="ADMIN PANEL" styleClass="app-subtitle" style="-fx-letter-spacing: 2px;"/>
+            </VBox>
+
+            <!-- User Info -->
+            <VBox style="-fx-padding: 4 16 24 20;
+                         -fx-border-color: transparent transparent #27272a transparent; -fx-border-width: 0 0 1 0;"
+                  spacing="3">
+                <Label text="SIGNED IN AS"
+                       style="-fx-font-size: 9px; -fx-text-fill: #a1a1aa; -fx-font-weight: bold;"/>
+                <Label fx:id="lblAdminName" styleClass="user-label" text="Admin"/>
+            </VBox>
+
+            <!-- Navigation -->
+            <VBox style="-fx-padding: 16 8 0 8;" spacing="4" VBox.vgrow="ALWAYS">
+                <Button text="BLOG"        styleClass="nav-btn" onAction="#onBlogClicked"          maxWidth="Infinity"/>
+                <Button text="BOOKINGS"    styleClass="nav-btn" onAction="#onBookingsClicked"      maxWidth="Infinity"/>
+                <Button text="PREDICTIONS" styleClass="nav-btn" onAction="#onPredictionsClicked"  maxWidth="Infinity"/>
+                <Button text="REACTIONS"   styleClass="nav-btn" onAction="#onReactionsClicked"    maxWidth="Infinity"/>
+                <Button text="BROADCASTS"  styleClass="nav-btn" onAction="#onNotificationsClicked" maxWidth="Infinity"/>
+                <Region VBox.vgrow="ALWAYS"/>
+            </VBox>
+
+            <!-- Divider -->
+            <Region style="-fx-background-color: #27272a; -fx-pref-height: 1; -fx-min-height: 1;"/>
+
+            <VBox style="-fx-padding: 12 8 16 8;">
+                <Button text="SWITCH ROLE" styleClass="nav-btn" onAction="#onSwitchRoleClicked"
+                        maxWidth="Infinity" style="-fx-text-fill: #a1a1aa; -fx-font-size: 11px;"/>
+            </VBox>
+        </VBox>
+    </left>
+
+    <center>
+        <StackPane fx:id="contentArea" styleClass="content-area" BorderPane.alignment="CENTER"/>
+    </center>
+</BorderPane>
