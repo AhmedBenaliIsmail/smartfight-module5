@@ -6,11 +6,11 @@
             fx:controller="tn.smartfight.controllers.NotificationController"
             stylesheets="@../styles/smartfight.css"
             style="-fx-background-color: #080808;"
-            prefWidth="1060" prefHeight="800">
+           >
 
     <!-- LEFT: Notifications list -->
     <left>
-        <VBox spacing="0" prefWidth="420"
+        <VBox spacing="0"
               style="-fx-background-color: #0a0a0a; -fx-border-color: transparent #1e1e1e transparent transparent; -fx-border-width: 0 1 0 0;">
 
             <HBox styleClass="section-header" alignment="CENTER_LEFT"
@@ -49,19 +49,19 @@
             <VBox spacing="8">
                 <Label text="FAVORITE DISCIPLINE"
                        style="-fx-font-size: 11px; -fx-text-fill: #555555; -fx-font-weight: bold;"/>
-                <ComboBox fx:id="cbDiscipline" styleClass="dark-combo" prefWidth="320"
+                <ComboBox fx:id="cbDiscipline" styleClass="dark-combo"
                           promptText="No preference"/>
             </VBox>
 
             <VBox spacing="8">
                 <Label text="FAVORITE FIGHTER"
                        style="-fx-font-size: 11px; -fx-text-fill: #555555; -fx-font-weight: bold;"/>
-                <ComboBox fx:id="cbFighter" styleClass="dark-combo" prefWidth="320"
+                <ComboBox fx:id="cbFighter" styleClass="dark-combo"
                           promptText="No preference"/>
             </VBox>
 
             <Button fx:id="btnSavePreferences" text="SAVE PREFERENCES"
-                    styleClass="btn-primary" prefWidth="220"/>
+                    styleClass="btn-primary"/>
 
             <Label fx:id="lblPrefResult" text=""
                    style="-fx-text-fill:#c9a227; -fx-font-size:13px; -fx-font-weight:bold;"/>

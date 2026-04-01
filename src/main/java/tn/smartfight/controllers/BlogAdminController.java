@@ -2,6 +2,7 @@ package tn.smartfight.controllers;
 
 import tn.smartfight.models.*;
 import tn.smartfight.services.*;
+import tn.smartfight.services.MediaCache;
 import tn.smartfight.session.SessionManager;
 import javafx.fxml.*;
 import javafx.scene.*;
@@ -93,15 +94,11 @@ public class BlogAdminController {
     private boolean isNewArticle = false;
     private List<BlogArticle> allAdminArticles;
 
-    private static final String MEDIA_DIR = System.getProperty("user.home") + "/smartfight_media/";
     private File selectedImageFile = null;
     private File selectedVideoFile = null;
 
     @FXML
     private void initialize() {
-        // Ensure media directory exists
-        try { Files.createDirectories(Paths.get(MEDIA_DIR)); } catch (IOException ignored) {}
-
         cbStatusFilter.getItems().addAll("All", "PUBLISHED", "DRAFT", "ARCHIVED");
         cbStatusFilter.setValue("All");
 
@@ -180,7 +177,8 @@ public class BlogAdminController {
         if (selectedArticle.hasImage()) {
             lblImagePath.setText("Current image set");
             try {
-                imgPreview.setImage(new Image(selectedArticle.getImageUrl(), 260, 160, true, true));
+                java.io.InputStream s = MediaCache.getImageStream(selectedArticle);
+                imgPreview.setImage(s != null ? new Image(s, 260, 160, true, true) : null);
             } catch (Exception ignored) { imgPreview.setImage(null); }
         } else {
             lblImagePath.setText("No image");
@@ -220,19 +218,6 @@ public class BlogAdminController {
         }
     }
 
-    private String copyMediaFile(File source, String prefix) {
-        try {
-            String ext = source.getName().substring(source.getName().lastIndexOf('.'));
-            String destName = prefix + "_" + System.currentTimeMillis() + ext;
-            Path dest = Paths.get(MEDIA_DIR, destName);
-            Files.copy(source.toPath(), dest, StandardCopyOption.REPLACE_EXISTING);
-            return dest.toUri().toString();
-        } catch (IOException e) {
-            System.err.println("[BlogAdmin] copyMediaFile: " + e.getMessage());
-            return source.toURI().toString();
-        }
-    }
-
     @FXML
     private void onSave() {
         String title = txtEditorTitle.getText().trim();
@@ -250,12 +235,21 @@ public class BlogAdminController {
         if (cbEditorCategory.getValue() != null) {
             a.setCategoryId(cbEditorCategory.getValue().getId());
         }
-        // Handle media uploads
+        // Handle media uploads — save to media/ folder and DB
+        int tempId = isNewArticle ? (int)(System.currentTimeMillis() % 100000) : a.getId();
         if (selectedImageFile != null) {
-            a.setImageUrl(copyMediaFile(selectedImageFile, "img"));
+            try {
+                a.setImageData(MediaCache.saveImage(selectedImageFile, tempId));
+            } catch (IOException e) {
+                System.err.println("[BlogAdmin] save image: " + e.getMessage());
+            }
         }
         if (selectedVideoFile != null) {
-            a.setVideoUrl(copyMediaFile(selectedVideoFile, "vid"));
+            try {
+                a.setVideoData(MediaCache.saveVideo(selectedVideoFile, tempId));
+            } catch (IOException e) {
+                System.err.println("[BlogAdmin] save video: " + e.getMessage());
+            }
         }
         if (isNewArticle) {
             blogService.create(a);

@@ -12,10 +12,8 @@
 /* ---- Sidebar ---- */
 .sidebar {
     -fx-background-color: #09090b;
-    -fx-border-color: transparent #27272a transparent transparent; /* zinc-800 */
+    -fx-border-color: transparent #27272a transparent transparent;
     -fx-border-width: 0 1 0 0;
-    -fx-min-width: 256px;
-    -fx-pref-width: 256px;
 }
 
 .app-title {

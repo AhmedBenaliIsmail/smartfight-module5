@@ -13,7 +13,9 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.util.Duration;
 
+import java.io.InputStream;
 import java.net.URL;
+import tn.smartfight.services.MediaCache;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -52,6 +54,8 @@ public class BlogReadController {
                 if (newVal.doubleValue() > 50) {
                     newsGrid.widthProperty().removeListener(this);
                     loadNews();
+                    // Persistent listener: reflow grid on every width change
+                    newsGrid.widthProperty().addListener((o, ov, nv) -> loadNews());
                 }
             }
         });
@@ -64,6 +68,9 @@ public class BlogReadController {
     private void onSearch() { loadNews(); }
 
     private void loadNews() {
+        double w = newsGrid.getWidth();
+        if (w < 50) return;
+
         List<BlogArticle> articles = fetchArticles();
         newsGrid.getChildren().clear();
 
@@ -78,53 +85,61 @@ public class BlogReadController {
         container.setStyle("-fx-padding: 0;");
         container.setMaxWidth(Double.MAX_VALUE);
 
+        if (w >= 1100) {
+            buildLayoutWide(articles, container, w);
+        } else if (w >= 700) {
+            buildLayoutMedium(articles, container, w);
+        } else {
+            buildLayoutNarrow(articles, container);
+        }
+
+        newsGrid.getChildren().add(container);
+    }
+
+    // >= 1100px: Featured + 2 side | Video + 2 side | 3-col grid
+    private void buildLayoutWide(List<BlogArticle> articles, VBox container, double w) {
+        double sideW = Math.min(340, w * 0.30);
         int idx = 0;
 
-        // --- ROW 1: Featured + 2 side cards ---
         if (idx < articles.size()) {
-            HBox row1 = new HBox(20);
-            row1.setMaxWidth(Double.MAX_VALUE);
+            HBox row = new HBox(20);
+            row.setMaxWidth(Double.MAX_VALUE);
+            StackPane featured = buildFeaturedCard(articles.get(idx++));
+            featured.setMinHeight(w * 0.27);
+            featured.setMaxHeight(w * 0.27);
+            HBox.setHgrow(featured, Priority.ALWAYS);
+            row.getChildren().add(featured);
 
-            BlogArticle featured = articles.get(idx++);
-            StackPane featuredCard = buildFeaturedCard(featured);
-            HBox.setHgrow(featuredCard, Priority.ALWAYS);
-            row1.getChildren().add(featuredCard);
-
-            VBox sideCol = new VBox(16);
-            sideCol.setMinWidth(340);
-            sideCol.setMaxWidth(340);
-            for (int i = 0; i < 2 && idx < articles.size(); i++) {
-                sideCol.getChildren().add(buildSmallCard(articles.get(idx++)));
-            }
-            row1.getChildren().add(sideCol);
-            container.getChildren().add(row1);
+            VBox side = new VBox(16);
+            side.setMinWidth(sideW); side.setMaxWidth(sideW);
+            for (int i = 0; i < 2 && idx < articles.size(); i++)
+                side.getChildren().add(buildSmallCard(articles.get(idx++)));
+            row.getChildren().add(side);
+            container.getChildren().add(row);
         }
 
-        // --- ROW 2: Video card + 2 side cards ---
         if (idx < articles.size()) {
-            HBox row2 = new HBox(20);
-            row2.setMaxWidth(Double.MAX_VALUE);
-
-            BlogArticle videoArticle = articles.get(idx++);
-            StackPane videoCard = buildVideoCard(videoArticle);
+            HBox row = new HBox(20);
+            row.setMaxWidth(Double.MAX_VALUE);
+            StackPane videoCard = buildVideoCard(articles.get(idx++));
+            videoCard.setMinHeight(w * 0.24);
+            videoCard.setMaxHeight(w * 0.24);
             HBox.setHgrow(videoCard, Priority.ALWAYS);
-            row2.getChildren().add(videoCard);
+            row.getChildren().add(videoCard);
 
-            VBox sideCol2 = new VBox(16);
-            sideCol2.setMinWidth(340);
-            sideCol2.setMaxWidth(340);
-            for (int i = 0; i < 2 && idx < articles.size(); i++) {
-                sideCol2.getChildren().add(buildSmallCard(articles.get(idx++)));
-            }
-            row2.getChildren().add(sideCol2);
-            container.getChildren().add(row2);
+            VBox side = new VBox(16);
+            side.setMinWidth(sideW); side.setMaxWidth(sideW);
+            for (int i = 0; i < 2 && idx < articles.size(); i++)
+                side.getChildren().add(buildSmallCard(articles.get(idx++)));
+            row.getChildren().add(side);
+            container.getChildren().add(row);
         }
 
-        // --- Remaining articles in small card rows ---
+        // 3-col remaining
         HBox currentRow = null;
-        int colCount = 0;
+        int col = 0;
         while (idx < articles.size()) {
-            if (colCount % 3 == 0) {
+            if (col % 3 == 0) {
                 currentRow = new HBox(20);
                 currentRow.setMaxWidth(Double.MAX_VALUE);
                 container.getChildren().add(currentRow);
@@ -132,10 +147,53 @@ public class BlogReadController {
             VBox card = buildSmallCard(articles.get(idx++));
             HBox.setHgrow(card, Priority.ALWAYS);
             currentRow.getChildren().add(card);
-            colCount++;
+            col++;
+        }
+    }
+
+    // 700–1099px: Featured full-width | 2-col grid
+    private void buildLayoutMedium(List<BlogArticle> articles, VBox container, double w) {
+        int idx = 0;
+
+        if (idx < articles.size()) {
+            StackPane featured = buildFeaturedCard(articles.get(idx++));
+            featured.setMinHeight(w * 0.30);
+            featured.setMaxHeight(w * 0.30);
+            featured.setMaxWidth(Double.MAX_VALUE);
+            container.getChildren().add(featured);
         }
 
-        newsGrid.getChildren().add(container);
+        if (idx < articles.size()) {
+            StackPane videoCard = buildVideoCard(articles.get(idx++));
+            videoCard.setMinHeight(w * 0.25);
+            videoCard.setMaxHeight(w * 0.25);
+            videoCard.setMaxWidth(Double.MAX_VALUE);
+            container.getChildren().add(videoCard);
+        }
+
+        // 2-col remaining
+        HBox currentRow = null;
+        int col = 0;
+        while (idx < articles.size()) {
+            if (col % 2 == 0) {
+                currentRow = new HBox(20);
+                currentRow.setMaxWidth(Double.MAX_VALUE);
+                container.getChildren().add(currentRow);
+            }
+            VBox card = buildSmallCard(articles.get(idx++));
+            HBox.setHgrow(card, Priority.ALWAYS);
+            currentRow.getChildren().add(card);
+            col++;
+        }
+    }
+
+    // < 700px: Everything stacked 1-col
+    private void buildLayoutNarrow(List<BlogArticle> articles, VBox container) {
+        for (BlogArticle a : articles) {
+            VBox card = buildSmallCard(a);
+            card.setMaxWidth(Double.MAX_VALUE);
+            container.getChildren().add(card);
+        }
     }
 
     // ---------------------------------------------------------------
@@ -359,7 +417,9 @@ public class BlogReadController {
 
         if (article.hasImage()) {
             try {
-                ImageView thumb = new ImageView(new Image(article.getImageUrl(), thumbW, thumbH, false, true));
+                InputStream thumbStream = MediaCache.getImageStream(article);
+                if (thumbStream == null) throw new Exception("no image");
+                ImageView thumb = new ImageView(new Image(thumbStream, thumbW, thumbH, false, true));
                 thumb.setFitWidth(thumbW);
                 thumb.setFitHeight(thumbH);
                 thumb.setPreserveRatio(false);
@@ -463,7 +523,9 @@ public class BlogReadController {
             imgPane.setMinHeight(height);
             imgPane.setMaxHeight(height);
 
-            ImageView iv = new ImageView(new Image(article.getImageUrl(), 0, height, true, true));
+            InputStream imgStream = MediaCache.getImageStream(article);
+            if (imgStream == null) return;
+            ImageView iv = new ImageView(new Image(imgStream, 0, height, true, true));
             iv.setPreserveRatio(true);
             iv.setFitHeight(height);
             StackPane.setAlignment(iv, Pos.CENTER);
@@ -606,7 +668,9 @@ public class BlogReadController {
                 headerPane.setMaxHeight(280);
                 headerPane.setStyle("-fx-background-color: #18181b; -fx-background-radius: 12;");
 
-                ImageView headerImg = new ImageView(new Image(article.getImageUrl(), 0, 280, true, true));
+                InputStream headerStream = MediaCache.getImageStream(article);
+                if (headerStream == null) throw new Exception("no image");
+                ImageView headerImg = new ImageView(new Image(headerStream, 0, 280, true, true));
                 headerImg.setPreserveRatio(true);
                 headerImg.setFitHeight(280);
                 StackPane.setAlignment(headerImg, Pos.CENTER);
@@ -799,7 +863,11 @@ public class BlogReadController {
         titleBar.setOnMouseDragged(ev -> { stage.setX(ev.getScreenX() - xOffset[0]); stage.setY(ev.getScreenY() - yOffset[0]); });
 
         try {
-            Media media = new Media(article.getVideoUrl());
+            byte[] videoBytes = blogService.getVideoData(article.getId());
+            String videoUri = MediaCache.getVideoUri(article.getId(), videoBytes);
+            if (videoUri == null) throw new Exception("No video data");
+
+            Media media = new Media(videoUri);
             MediaPlayer player = new MediaPlayer(media);
             MediaView mediaView = new MediaView(player);
             mediaView.setPreserveRatio(true);

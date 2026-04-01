@@ -6,11 +6,11 @@
             fx:controller="tn.smartfight.controllers.ReactionAdminController"
             stylesheets="@../styles/smartfight.css"
             style="-fx-background-color: #080808;"
-            prefWidth="1060" prefHeight="800">
+           >
 
     <!-- LEFT: Fight list -->
     <left>
-        <VBox spacing="0" prefWidth="300"
+        <VBox spacing="0"
               style="-fx-background-color: #0a0a0a; -fx-border-color: transparent #1e1e1e transparent transparent; -fx-border-width: 0 1 0 0;">
 
             <HBox styleClass="section-header" alignment="CENTER_LEFT"
@@ -24,7 +24,7 @@
                        style="-fx-font-size: 11px; -fx-text-fill: #555555;"/>
             </HBox>
 
-            <ListView fx:id="fightList" styleClass="dark-list" VBox.vgrow="ALWAYS" prefHeight="600"/>
+            <ListView fx:id="fightList" styleClass="dark-list" VBox.vgrow="ALWAYS"/>
         </VBox>
     </left>
 

@@ -9,6 +9,7 @@ target/
 .full-stack-feature/
 .idea/
 
+
 ### IntelliJ IDEA ###
 .idea/modules.xml
 .idea/jarRepositories.xml

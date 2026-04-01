@@ -6,7 +6,7 @@
       fx:controller="tn.smartfight.controllers.NotificationAdminController"
       stylesheets="@../styles/smartfight.css"
       style="-fx-background-color: #080808;"
-      spacing="0" prefWidth="1060" prefHeight="800">
+      spacing="0">
 
     <!-- Header -->
     <HBox styleClass="page-header" alignment="CENTER_LEFT" spacing="16">
@@ -19,7 +19,7 @@
     <HBox spacing="0" VBox.vgrow="ALWAYS" alignment="TOP_LEFT">
 
         <!-- Broadcast Form -->
-        <VBox spacing="16" prefWidth="460" maxWidth="480"
+        <VBox spacing="16" maxWidth="480"
               style="-fx-padding: 32 32 32 32; -fx-border-color: transparent #1e1e1e transparent transparent; -fx-border-width: 0 1 0 0;">
 
             <HBox styleClass="section-header" alignment="CENTER_LEFT">
@@ -35,8 +35,8 @@
                 <Label text="SEND TO"
                        style="-fx-font-size: 11px; -fx-text-fill: #555555; -fx-font-weight: bold;"/>
                 <HBox spacing="12">
-                    <ComboBox fx:id="cbTarget" styleClass="dark-combo" prefWidth="160"/>
-                    <ComboBox fx:id="cbTargetDiscipline" styleClass="dark-combo" prefWidth="200"
+                    <ComboBox fx:id="cbTarget" styleClass="dark-combo"/>
+                    <ComboBox fx:id="cbTargetDiscipline" styleClass="dark-combo"
                               promptText="Select discipline..." disable="true"/>
                 </HBox>
             </VBox>
@@ -67,10 +67,10 @@
             </HBox>
             <TableView fx:id="historyTable" styleClass="dark-table" VBox.vgrow="ALWAYS">
                 <columns>
-                    <TableColumn fx:id="colTitle"      text="TITLE"       prefWidth="200"/>
-                    <TableColumn fx:id="colType"       text="TYPE"        prefWidth="130"/>
-                    <TableColumn fx:id="colDate"       text="SENT AT"     prefWidth="170"/>
-                    <TableColumn fx:id="colRecipients" text="RECIPIENTS"  prefWidth="100"/>
+                    <TableColumn fx:id="colTitle"      text="TITLE"      />
+                    <TableColumn fx:id="colType"       text="TYPE"       />
+                    <TableColumn fx:id="colDate"       text="SENT AT"    />
+                    <TableColumn fx:id="colRecipients" text="RECIPIENTS" />
                 </columns>
             </TableView>
         </VBox>

@@ -6,7 +6,7 @@
       fx:controller="tn.smartfight.controllers.PredictionController"
       stylesheets="@../styles/smartfight.css"
       style="-fx-background-color: #080808;"
-      spacing="0" prefWidth="1060" prefHeight="800">
+      spacing="0">
 
     <!-- Header -->
     <HBox styleClass="page-header" alignment="CENTER_LEFT" spacing="16">
@@ -25,7 +25,7 @@
                     <Label text="EVENT"
                            style="-fx-text-fill:#555555; -fx-font-size:11px; -fx-font-weight:bold;"/>
                     <ComboBox fx:id="cbPredictEvent" styleClass="dark-combo"
-                              prefWidth="300" promptText="Choose event..."/>
+                              promptText="Choose event..."/>
                 </HBox>
 
                 <ScrollPane styleClass="dark-scroll" VBox.vgrow="ALWAYS" fitToWidth="true">
@@ -57,11 +57,11 @@
 
                 <TableView fx:id="historyTable" styleClass="dark-table" VBox.vgrow="ALWAYS">
                     <columns>
-                        <TableColumn fx:id="colMatch"   text="MATCH"        prefWidth="260"/>
-                        <TableColumn fx:id="colPick"    text="MY PICK"      prefWidth="160"/>
-                        <TableColumn fx:id="colMethod"  text="METHOD"       prefWidth="110"/>
-                        <TableColumn fx:id="colResult"  text="RESULT"       prefWidth="120"/>
-                        <TableColumn fx:id="colPoints"  text="POINTS"       prefWidth="80"/>
+                        <TableColumn fx:id="colMatch"   text="MATCH"       />
+                        <TableColumn fx:id="colPick"    text="MY PICK"     />
+                        <TableColumn fx:id="colMethod"  text="METHOD"      />
+                        <TableColumn fx:id="colResult"  text="RESULT"      />
+                        <TableColumn fx:id="colPoints"  text="POINTS"      />
                     </columns>
                 </TableView>
             </VBox>
@@ -77,19 +77,19 @@
                     <ToggleButton fx:id="btnEventBoard"  text="BY EVENT"
                                   styleClass="btn-secondary"
                                   style="-fx-font-size: 12px;"/>
-                    <ComboBox fx:id="cbLeaderboardEvent" styleClass="dark-combo" prefWidth="220"
+                    <ComboBox fx:id="cbLeaderboardEvent" styleClass="dark-combo"
                               promptText="Select event..."
                               style="-fx-margin: 0 0 0 12;"/>
                 </HBox>
 
                 <TableView fx:id="leaderboardTable" styleClass="dark-table" VBox.vgrow="ALWAYS">
                     <columns>
-                        <TableColumn fx:id="colRank"         text="RANK"     prefWidth="70"/>
-                        <TableColumn fx:id="colFan"          text="FAN"      prefWidth="200"/>
-                        <TableColumn fx:id="colCorrect"      text="CORRECT"  prefWidth="90"/>
-                        <TableColumn fx:id="colTotal"        text="TOTAL"    prefWidth="80"/>
-                        <TableColumn fx:id="colAccuracy"     text="ACCURACY" prefWidth="100"/>
-                        <TableColumn fx:id="colLeaderPoints" text="POINTS"   prefWidth="90"/>
+                        <TableColumn fx:id="colRank"         text="RANK"    />
+                        <TableColumn fx:id="colFan"          text="FAN"     />
+                        <TableColumn fx:id="colCorrect"      text="CORRECT" />
+                        <TableColumn fx:id="colTotal"        text="TOTAL"   />
+                        <TableColumn fx:id="colAccuracy"     text="ACCURACY"/>
+                        <TableColumn fx:id="colLeaderPoints" text="POINTS"  />
                     </columns>
                 </TableView>
             </VBox>

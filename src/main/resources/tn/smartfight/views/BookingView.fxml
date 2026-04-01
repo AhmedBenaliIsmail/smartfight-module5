@@ -6,7 +6,7 @@
       fx:controller="tn.smartfight.controllers.BookingController"
       stylesheets="@../styles/smartfight.css"
       style="-fx-background-color: #080808;"
-      spacing="0" prefWidth="1060" prefHeight="800">
+      spacing="0">
 
     <!-- Header -->
     <HBox styleClass="page-header" alignment="CENTER_LEFT" spacing="16">
@@ -97,13 +97,13 @@
                 </HBox>
                 <TableView fx:id="bookingsTable" styleClass="dark-table" VBox.vgrow="ALWAYS">
                     <columns>
-                        <TableColumn fx:id="colEvent"   text="EVENT"      prefWidth="220"/>
-                        <TableColumn fx:id="colDate"    text="DATE"       prefWidth="100"/>
-                        <TableColumn fx:id="colType"    text="TYPE"       prefWidth="90"/>
-                        <TableColumn fx:id="colQty"     text="QTY"        prefWidth="60"/>
-                        <TableColumn fx:id="colPrice"   text="TOTAL"      prefWidth="100"/>
-                        <TableColumn fx:id="colStatus"  text="STATUS"     prefWidth="100"/>
-                        <TableColumn fx:id="colActions" text="ACTIONS"    prefWidth="150"/>
+                        <TableColumn fx:id="colEvent"   text="EVENT"     />
+                        <TableColumn fx:id="colDate"    text="DATE"      />
+                        <TableColumn fx:id="colType"    text="TYPE"      />
+                        <TableColumn fx:id="colQty"     text="QTY"       />
+                        <TableColumn fx:id="colPrice"   text="TOTAL"     />
+                        <TableColumn fx:id="colStatus"  text="STATUS"    />
+                        <TableColumn fx:id="colActions" text="ACTIONS"   />
                     </columns>
                 </TableView>
             </VBox>

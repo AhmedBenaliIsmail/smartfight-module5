@@ -9,12 +9,15 @@
 
     <!-- TOP: Header with Title and Filters -->
     <top>
-        <VBox style="-fx-padding: 32 40 24 40;" spacing="16">
-            <HBox alignment="BOTTOM_LEFT" spacing="20">
-                <VBox spacing="4" HBox.hgrow="ALWAYS">
+        <VBox style="-fx-padding: 16 40 12 40;" spacing="10">
+
+            <!-- Row 1: Title left, Filters right — all on one line -->
+            <HBox alignment="CENTER_LEFT" spacing="20">
+                <!-- Title group -->
+                <VBox spacing="2" HBox.hgrow="ALWAYS">
                     <HBox alignment="BASELINE_LEFT" spacing="8">
-                        <Label text="COMBAT" style="-fx-font-size: 48px; -fx-font-weight: 900; -fx-font-style: italic; -fx-text-fill: #fafafa;"/>
-                        <Label text="NEWS" style="-fx-font-size: 48px; -fx-font-weight: 900; -fx-font-style: italic; -fx-text-fill: #dc2626;"/>
+                        <Label text="COMBAT" style="-fx-font-size: 32px; -fx-font-weight: 900; -fx-font-style: italic; -fx-text-fill: #fafafa;"/>
+                        <Label text="NEWS" style="-fx-font-size: 32px; -fx-font-weight: 900; -fx-font-style: italic; -fx-text-fill: #dc2626;"/>
                     </HBox>
                     <Label text="LATEST UPDATES, BREAKDOWNS, AND EXCLUSIVE INTERVIEWS"
                            style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #a1a1aa;"/>
@@ -22,10 +25,10 @@
 
                 <!-- Filters -->
                 <HBox spacing="12" alignment="CENTER_RIGHT">
-                    <ComboBox fx:id="cbCategory" styleClass="dark-combo" prefWidth="180" promptText="ALL NEWS"
+                    <ComboBox fx:id="cbCategory" styleClass="dark-combo" promptText="ALL NEWS"
                               onAction="#onCategoryChanged"
                               style="-fx-background-radius: 9999; -fx-border-radius: 9999; -fx-font-weight: bold; -fx-text-fill: #fafafa;"/>
-                    <TextField fx:id="txtSearch" styleClass="text-field" promptText="Search news..." prefWidth="200"
+                    <TextField fx:id="txtSearch" styleClass="text-field" promptText="Search news..."
                                onAction="#onSearch"
                                style="-fx-background-radius: 9999; -fx-border-radius: 9999;"/>
                     <Button text="GO" styleClass="btn-primary" onAction="#onSearch"
@@ -33,9 +36,9 @@
                 </HBox>
             </HBox>
 
-            <!-- Section header -->
+            <!-- Row 2: Section header divider -->
             <HBox alignment="BASELINE_LEFT"
-                  style="-fx-border-color: transparent transparent #dc2626 transparent; -fx-border-width: 0 0 2 0; -fx-padding: 8 0;">
+                  style="-fx-border-color: transparent transparent #dc2626 transparent; -fx-border-width: 0 0 2 0; -fx-padding: 4 0;">
                 <Label text="LATEST STORIES" style="-fx-font-size: 14px; -fx-font-weight: 900; -fx-font-style: italic; -fx-text-fill: #fafafa;"/>
                 <Region HBox.hgrow="ALWAYS"/>
                 <Label text="SORT BY: NEWEST" style="-fx-font-size: 10px; -fx-font-weight: bold; -fx-text-fill: #71717a;"/>

@@ -6,7 +6,7 @@
       fx:controller="tn.smartfight.controllers.BookingAdminController"
       stylesheets="@../styles/smartfight.css"
       style="-fx-background-color: #080808;"
-      spacing="0" prefWidth="1060" prefHeight="800">
+      spacing="0">
 
     <!-- Header -->
     <HBox styleClass="page-header" alignment="CENTER_LEFT" spacing="16">
@@ -40,23 +40,23 @@
     <!-- Filters -->
     <HBox spacing="12" alignment="CENTER_LEFT" style="-fx-padding: 0 32 16 32;">
         <Label text="FILTER:" style="-fx-text-fill:#555555; -fx-font-size:11px; -fx-font-weight:bold;"/>
-        <ComboBox fx:id="cbEventFilter"  styleClass="dark-combo" prefWidth="220" promptText="All Events"/>
-        <ComboBox fx:id="cbStatusFilter" styleClass="dark-combo" prefWidth="140" promptText="All Status"/>
+        <ComboBox fx:id="cbEventFilter"  styleClass="dark-combo" promptText="All Events"/>
+        <ComboBox fx:id="cbStatusFilter" styleClass="dark-combo" promptText="All Status"/>
     </HBox>
 
     <!-- Table -->
     <VBox VBox.vgrow="ALWAYS" style="-fx-padding: 0 32 32 32;">
         <TableView fx:id="bookingsTable" styleClass="dark-table" VBox.vgrow="ALWAYS">
             <columns>
-                <TableColumn fx:id="colEvent"   text="EVENT"     prefWidth="200"/>
-                <TableColumn fx:id="colFan"     text="FAN"       prefWidth="140"/>
-                <TableColumn fx:id="colEmail"   text="EMAIL"     prefWidth="180"/>
-                <TableColumn fx:id="colType"    text="TYPE"      prefWidth="90"/>
-                <TableColumn fx:id="colQty"     text="QTY"       prefWidth="55"/>
-                <TableColumn fx:id="colPrice"   text="TOTAL"     prefWidth="100"/>
-                <TableColumn fx:id="colDate"    text="DATE"      prefWidth="100"/>
-                <TableColumn fx:id="colStatus"  text="STATUS"    prefWidth="100"/>
-                <TableColumn fx:id="colActions" text="ACTIONS"   prefWidth="140"/>
+                <TableColumn fx:id="colEvent"   text="EVENT"    />
+                <TableColumn fx:id="colFan"     text="FAN"      />
+                <TableColumn fx:id="colEmail"   text="EMAIL"    />
+                <TableColumn fx:id="colType"    text="TYPE"     />
+                <TableColumn fx:id="colQty"     text="QTY"      />
+                <TableColumn fx:id="colPrice"   text="TOTAL"    />
+                <TableColumn fx:id="colDate"    text="DATE"     />
+                <TableColumn fx:id="colStatus"  text="STATUS"   />
+                <TableColumn fx:id="colActions" text="ACTIONS"  />
             </columns>
         </TableView>
     </VBox>

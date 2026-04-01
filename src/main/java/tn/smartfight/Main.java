@@ -6,6 +6,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DialogPane;
+import tn.smartfight.database.DBMigration;
+import tn.smartfight.services.MediaCache;
 import tn.smartfight.services.MediaSeeder;
 import java.util.Objects;
 
@@ -13,6 +15,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        MediaCache.init();
+        DBMigration.run();
         MediaSeeder.seed();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn/smartfight/views/RolePickerView.fxml"));
         Scene scene = new Scene(loader.load(), 1280, 800);
@@ -20,6 +24,7 @@ public class Main extends Application {
         stage.setMinWidth(1024);
         stage.setMinHeight(700);
         stage.setScene(scene);
+        stage.setMaximized(true);
         stage.show();
     }
 

@@ -10,33 +10,15 @@ public class BlogArticle {
     private String title;
     private String content;
     private String summary;
-    private String imageUrl;
-    private String videoUrl;
+    private byte[] imageData;
+    private byte[] videoData;
+    private boolean hasVideoStored;
     private String status;
     private int viewCount;
     private String createdAt;
     private String updatedAt;
 
     public BlogArticle() {}
-
-    public BlogArticle(int id, int categoryId, String categoryName, int authorId, String authorName,
-                       String title, String content, String summary, String imageUrl, String videoUrl,
-                       String status, int viewCount, String createdAt, String updatedAt) {
-        this.id = id;
-        this.categoryId = categoryId;
-        this.categoryName = categoryName;
-        this.authorId = authorId;
-        this.authorName = authorName;
-        this.title = title;
-        this.content = content;
-        this.summary = summary;
-        this.imageUrl = imageUrl;
-        this.videoUrl = videoUrl;
-        this.status = status;
-        this.viewCount = viewCount;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
 
     // --- Helpers ---
 
@@ -46,6 +28,14 @@ public class BlogArticle {
 
     public boolean isDraft() {
         return "DRAFT".equals(status);
+    }
+
+    public boolean hasImage() {
+        return imageData != null && imageData.length > 0;
+    }
+
+    public boolean hasVideo() {
+        return hasVideoStored;
     }
 
     @Override
@@ -79,14 +69,14 @@ public class BlogArticle {
     public String getSummary() { return summary; }
     public void setSummary(String summary) { this.summary = summary; }
 
-    public String getImageUrl() { return imageUrl; }
-    public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
+    public byte[] getImageData() { return imageData; }
+    public void setImageData(byte[] imageData) { this.imageData = imageData; }
 
-    public String getVideoUrl() { return videoUrl; }
-    public void setVideoUrl(String videoUrl) { this.videoUrl = videoUrl; }
+    public byte[] getVideoData() { return videoData; }
+    public void setVideoData(byte[] videoData) { this.videoData = videoData; }
 
-    public boolean hasImage() { return imageUrl != null && !imageUrl.isBlank(); }
-    public boolean hasVideo() { return videoUrl != null && !videoUrl.isBlank(); }
+    public boolean isHasVideoStored() { return hasVideoStored; }
+    public void setHasVideoStored(boolean hasVideoStored) { this.hasVideoStored = hasVideoStored; }
 
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }

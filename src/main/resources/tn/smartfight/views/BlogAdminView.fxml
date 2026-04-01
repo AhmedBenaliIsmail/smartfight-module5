@@ -6,11 +6,11 @@
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21"
             fx:controller="tn.smartfight.controllers.BlogAdminController"
             stylesheets="@../styles/smartfight.css"
-            prefWidth="1060" prefHeight="800">
+           >
 
     <!-- LEFT: Article list -->
     <left>
-        <VBox prefWidth="300"
+        <VBox
               style="-fx-background-color: #0a0a0a; -fx-border-color: transparent #1e1e1e transparent transparent; -fx-border-width: 0 1 0 0;"
               spacing="0">
 
